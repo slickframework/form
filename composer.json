@@ -1,0 +1,44 @@
+{
+  "name": "slick/form",
+  "description": "HTML form manipulation library for slick",
+  "homepage": "https://github.com/slickframework/form",
+  "keywords": [
+    "slick",
+    "form",
+    "form manipulation"
+  ],
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "version": "v1.1.0",
+  "authors": [
+    {
+      "name": "Filipe Silva",
+      "email": "silvam.filipe@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Slick\\Form\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Slick\\Tests\\Form\\": "tests"
+    }
+  },
+  "require": {
+    "slick/common": "^1.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "scrutinizer/ocular": "~1.1",
+    "behat/behat": "~3.0.4"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.1-dev",
+      "dev-develop": "1.2-dev"
+    }
+  }
+}
