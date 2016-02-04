@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "45bef570e18aece07656616fbe26e05f",
-    "content-hash": "fece57a50e7b152f8245e4c9e88616d6",
+    "hash": "39eec11e8d7aa258421b969632f0a764",
+    "content-hash": "ca40311b81f723b6f654effe94625a3c",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -234,6 +234,110 @@
                 "slick"
             ],
             "time": "2016-01-11 16:49:11"
+        },
+        {
+            "name": "slick/filter",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/slickframework/filter.git",
+                "reference": "9fee3acdf9917a8e962d5e71d5d6f9112155dfb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/slickframework/filter/zipball/9fee3acdf9917a8e962d5e71d5d6f9112155dfb8",
+                "reference": "9fee3acdf9917a8e962d5e71d5d6f9112155dfb8",
+                "shasum": ""
+            },
+            "require-dev": {
+                "behat/behat": "~3.0.4",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev",
+                    "dev-develop": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Slick\\Filter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Silva",
+                    "email": "silvam.filipe@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Filter utilities for Slick Framework",
+            "homepage": "https://github.com/slickframework/filter",
+            "keywords": [
+                "filter",
+                "slick"
+            ],
+            "time": "2016-01-17 16:45:51"
+        },
+        {
+            "name": "slick/validator",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/slickframework/validator.git",
+                "reference": "34db2f5c704f0b4e07f9e602396362365058041d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/slickframework/validator/zipball/34db2f5c704f0b4e07f9e602396362365058041d",
+                "reference": "34db2f5c704f0b4e07f9e602396362365058041d",
+                "shasum": ""
+            },
+            "require": {
+                "slick/common": "^1.1"
+            },
+            "require-dev": {
+                "behat/behat": "~3.0.4",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev",
+                    "dev-develop": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Slick\\Validator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Silva",
+                    "email": "silvam.filipe@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Slick/Validator is a simple library with useful input validators",
+            "homepage": "https://github.com/slickframework/validator",
+            "keywords": [
+                "input validation",
+                "slick",
+                "validation"
+            ],
+            "time": "2016-02-02 17:55:01"
         }
     ],
     "packages-dev": [
@@ -1941,12 +2045,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "1c9e7da52145a7506237a09acc47888556fff963"
+                "reference": "d59b01b03451dfc1497b9736120ac6bcb422ff10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/1c9e7da52145a7506237a09acc47888556fff963",
-                "reference": "1c9e7da52145a7506237a09acc47888556fff963",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d59b01b03451dfc1497b9736120ac6bcb422ff10",
+                "reference": "d59b01b03451dfc1497b9736120ac6bcb422ff10",
                 "shasum": ""
             },
             "require": {
@@ -1993,7 +2097,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-02 09:49:18"
+            "time": "2016-02-03 18:01:35"
         },
         {
             "name": "symfony/dependency-injection",
