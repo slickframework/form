@@ -64,6 +64,10 @@ class FieldSet extends AbstractCollection implements ContainerInterface
      */
     public function add(ElementInterface $element)
     {
+        if (null === $element->getName()) {
+            $this->data[] = $element;
+            return $this;
+        }
         $this->data[$element->getName()] = $element;
         return $this;
     }
@@ -78,9 +82,21 @@ class FieldSet extends AbstractCollection implements ContainerInterface
     public function get($name)
     {
         $selected = null;
-        if (array_key_exists($name, $this->data)) {
-            $selected = $this->data[$name];
+        /** @var ElementInterface|ContainerInterface $element */
+        foreach ($this as $element) {
+            if ($element->getName() == $name) {
+                $selected = $element;
+                break;
+            }
+
+            if ($element instanceof ContainerInterface) {
+                $selected = $element->get($name);
+                if (null !== $selected) {
+                    break;
+                }
+            }
         }
+
         return $selected;
     }
 

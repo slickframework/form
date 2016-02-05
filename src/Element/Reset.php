@@ -9,15 +9,15 @@
 
 namespace Slick\Form\Element;
 
-use Slick\Form\Element\AbstractElement;
 use Slick\Form\ElementInterface;
 
 /**
- * Button input
+ * HTML form reset button
  *
  * @package Slick\Form\Element
+ * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
-class Button extends AbstractElement implements ElementInterface
+class Reset extends AbstractElement implements ElementInterface
 {
 
 }

@@ -95,9 +95,14 @@ class FieldSetTest extends TestCase
         $text->setName('address')
             ->setLabel('Address')
             ->setValue('none');
-        $this->fieldSet->add($text)
-            ->setValues(['foo' => 'bar', 'address' => 'test']);
+        $group = (new FieldSet())->add($text);
+
+        $this->fieldSet
+            ->add((new Text)->setName('name')->setValue(''))
+            ->add($group)
+            ->setValues(['foo' => 'bar', 'address' => 'test', 'name' => 'other']);
         $this->assertEquals('test', $text->getValue());
+        $this->assertEquals('other', $this->fieldSet->get('name')->getValue());
     }
 
     /**

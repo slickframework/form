@@ -29,7 +29,7 @@ class Form extends FieldSet implements FormInterface
     {
         parent::__construct();
         $this->setAttribute('action', '')
-            ->setAttribute('action', 'post');
+            ->setAttribute('method', 'post');
     }
 
     /**
