@@ -23,14 +23,19 @@ abstract class AbstractElement
 {
 
     /**
+     * Add attribute manipulation methods
+     */
+    use AttributesAwareMethods;
+
+    /**
      * @var string|mixed
      */
     protected $value;
 
     /**
-     * @var AttributesMapInterface
+     * @var null|string
      */
-    protected $attributes;
+    protected $name = null;
 
     /**
      * Gets the element value
@@ -59,75 +64,25 @@ abstract class AbstractElement
     }
 
     /**
-     * Set an HTML tag attribute
-     *
-     * @param string $name
-     * @param string $value
-     *
-     * @return self|$this|ElementInterface
-     */
-    public function setAttribute($name, $value = null)
-    {
-        $this->getAttributes()->set($name, $value);
-        return $this;
-    }
-
-    /**
-     * Gets the value of the attribute with the provided name
-     *
-     * If there is no attribute with provided name, the default value
-     * SHOULD be returned.
-     *
-     * @param string      $name
-     * @param null|string $default
+     * Returns element name
      *
      * @return null|string
      */
-    public function getAttribute($name, $default = null)
+    public function getName()
     {
-        $value = $default;
-        if ($this->hasAttribute($name)) {
-            $value = $this->attributes->get($name);
-        }
-        return $value;
+        return $this->name;
     }
 
     /**
-     * Check if the provided attribute is set/exists
+     * Sets element name
      *
      * @param string $name
      *
-     * @return boolean True if attribute with name exists, false otherwise
+     * @return $this|self|AbstractElement
      */
-    public function hasAttribute($name)
+    public function setName($name)
     {
-        return $this->getAttributes()
-            ->containsKey($name);
-    }
-
-    /**
-     * Get the attributes map collection
-     *
-     * @return AttributesMapInterface
-     */
-    public function getAttributes()
-    {
-        if (null === $this->attributes) {
-            $this->setAttributes(new AttributesMap());
-        }
-        return $this->attributes;
-    }
-
-    /**
-     * Sets the attribute map collection
-     *
-     * @param AttributesMapInterface $attributes
-     *
-     * @return self|$this|ElementInterface
-     */
-    public function setAttributes(AttributesMapInterface $attributes)
-    {
-        $this->attributes = $attributes;
+        $this->name = $name;
         return $this;
     }
 }

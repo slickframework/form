@@ -9,6 +9,7 @@
 
 namespace Slick\Form\Input;
 
+use Slick\Form\ElementInterface;
 use Slick\Form\Exception\InvalidArgumentException;
 use Slick\Validator\StaticValidator;
 use Slick\Validator\ValidationChain;
@@ -85,7 +86,7 @@ trait ValidationAwareMethods
      * @param string|ValidatorInterface $validator
      * @param string $message Error message
      *
-     * @return self|$this|ValidationAwareInterface
+     * @return self|$this|ValidationAwareInterface|ElementInterface
      *
      * @throws InvalidArgumentException If the provided validator is an unknown
      *      validator alias or not a valid class name or the object passed

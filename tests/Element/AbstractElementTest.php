@@ -130,6 +130,19 @@ class AbstractElementTest extends TestCase
     }
 
     /**
+     * Should set and retrieve name without adding it to the attributes
+     * @test
+     */
+    public function setElementName()
+    {
+        $name = 'test';
+        $this->assertSame($this->element, $this->element->setName($name));
+        $attributes = $this->element->getAttributes();
+        $this->assertFalse($attributes->containsKey('name'));
+        $this->assertEquals($name, $this->element->getName());
+    }
+
+    /**
      * Gets a mocked attributes map object
      *
      * @return MockObject|AttributesMapInterface

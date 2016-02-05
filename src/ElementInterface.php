@@ -31,6 +31,16 @@ interface ElementInterface
     public function getValue();
 
     /**
+     * Returns element name.
+     *
+     * This name can be null however a form or field set will use it
+     * in the FormInterface::get() method to retrieve it.
+     *
+     * @return mixed
+     */
+    public function getName();
+
+    /**
      * Sets the value or content of the element
      *
      * @param mixed $value
