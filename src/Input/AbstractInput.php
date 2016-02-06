@@ -63,6 +63,7 @@ abstract class AbstractInput extends AbstractElement
     public function setName($name)
     {
         $this->setAttribute('name', $name);
+        $this->name = $name;
         return $this;
     }
 

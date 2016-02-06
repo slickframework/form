@@ -37,14 +37,6 @@ interface InputInterface extends
     public function getName();
 
     /**
-     * Sets input name
-     *
-     * @param string $name
-     * @return self|$this|InputInterface
-     */
-    public function setName($name);
-
-    /**
      * Sets the input label
      *
      * Label parameter can be a string or a element interface.

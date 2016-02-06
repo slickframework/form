@@ -1,0 +1,31 @@
+class: Slick\Tests\Form\LoginForm
+id: login-form
+elements:
+  username:
+    type: text
+    label:
+      value: Username or e-mail address
+      attributes:
+        class: sr-only
+    validates:
+      notEmpty: You have to enter a username or email address to login
+    attributes:
+      autocomplete: off
+    filters:
+      - text
+  password:
+    type: password
+    label: Password
+    attributes:
+      autocomplete: off
+    validates:
+      notEmpty: To login you need a password, right!?
+  buttonGroup:
+    type: fieldset
+    elements:
+      submit:
+        type: submit
+        value: Login
+      resetPassword:
+        type: button
+        value: Recover password

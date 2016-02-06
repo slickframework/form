@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f03dd091cae87f6cdc519e0ebce95ff4",
-    "content-hash": "742511eabe58d75d8cfc407a5a16f066",
+    "hash": "6b0ea03c7b9d6a603b76d0a0c1bbe9f2",
+    "content-hash": "fff73c1c0c2292e97bd5afa35edde062",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -615,6 +615,55 @@
                 "validation"
             ],
             "time": "2016-02-02 17:55:01"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "2.8.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "33fd1b2cfdde601704665fad343014bba04b0753"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/33fd1b2cfdde601704665fad343014bba04b0753",
+                "reference": "33fd1b2cfdde601704665fad343014bba04b0753",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-02-02 09:49:18"
         }
     ],
     "packages-dev": [
@@ -2272,12 +2321,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "fc19da5120822a9f9cdda46c7f764d7241b2cd49"
+                "reference": "f4d8e2236db888c708d934975070ff6f0a332a24"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/config/zipball/f4d8e2236db888c708d934975070ff6f0a332a24",
-                "reference": "fc19da5120822a9f9cdda46c7f764d7241b2cd49",
+                "reference": "f4d8e2236db888c708d934975070ff6f0a332a24",
                 "shasum": ""
             },
             "require": {
@@ -2314,7 +2363,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-21 09:24:53"
+            "time": "2016-02-04 14:44:13"
         },
         {
             "name": "symfony/console",
@@ -2382,12 +2431,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "e9f375e67fca754086e765e386c10dc9b3eec8e6"
+                "reference": "478a98846ef14fac480f40f8ca4e58e99c8045bf"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/478a98846ef14fac480f40f8ca4e58e99c8045bf",
-                "reference": "e9f375e67fca754086e765e386c10dc9b3eec8e6",
+                "reference": "478a98846ef14fac480f40f8ca4e58e99c8045bf",
                 "shasum": ""
             },
             "require": {
@@ -2436,7 +2485,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-02 09:49:18"
+            "time": "2016-02-04 13:53:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2668,12 +2717,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "374a3566a718236bac2f009f6305016d644f86b8"
+                "reference": "650a91315648fe433824e454b2c7107926f9876b"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/process/zipball/650a91315648fe433824e454b2c7107926f9876b",
-                "reference": "374a3566a718236bac2f009f6305016d644f86b8",
+                "reference": "650a91315648fe433824e454b2c7107926f9876b",
                 "shasum": ""
             },
             "require": {
@@ -2709,7 +2758,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-25 11:11:57"
+            "time": "2016-02-04 12:57:09"
         },
         {
             "name": "symfony/translation",
@@ -2772,55 +2821,6 @@
                 }
             ],
             "description": "Symfony Translation Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-02-02 09:49:18"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "2.8.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "33fd1b2cfdde601704665fad343014bba04b0753"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/33fd1b2cfdde601704665fad343014bba04b0753",
-                "reference": "33fd1b2cfdde601704665fad343014bba04b0753",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-02-02 09:49:18"
         }

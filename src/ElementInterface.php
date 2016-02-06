@@ -41,6 +41,15 @@ interface ElementInterface
     public function getName();
 
     /**
+     * Sets element name
+     *
+     * @param string $name
+     *
+     * @return self|$this|ElementInterface
+     */
+    public function setName($name);
+
+    /**
      * Sets the value or content of the element
      *
      * @param mixed $value
