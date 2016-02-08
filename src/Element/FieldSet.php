@@ -13,6 +13,7 @@ use Slick\Common\Utils\Collection\AbstractCollection;
 use Slick\Form\ElementInterface;
 use Slick\Form\Input\Text;
 use Slick\Form\Input\ValidationAwareInterface;
+use Slick\Form\InputInterface;
 
 /**
  * FieldSet
@@ -77,7 +78,7 @@ class FieldSet extends AbstractCollection implements ContainerInterface
      *
      * @param string $name
      *
-     * @return null|ElementInterface
+     * @return null|ElementInterface|InputInterface
      */
     public function get($name)
     {

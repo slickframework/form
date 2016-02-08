@@ -16,6 +16,7 @@ use Slick\Form\Element\Label;
 use Slick\Form\Element\Reset;
 use Slick\Form\Element\Submit;
 use Slick\Form\ElementInterface;
+use Slick\Form\Exception\InvalidArgumentException;
 use Slick\Form\Input\Checkbox;
 use Slick\Form\Input\File;
 use Slick\Form\Input\Hidden;
@@ -53,6 +54,13 @@ class AddElements implements WorkerInterface
     ];
 
     /**
+     * @var array List of validators that adds required attribute to input
+     */
+    public static $triggerRequired = [
+        'notEmpty', 'email', 'url'
+    ];
+
+    /**
      * Adds or changes a specific aspect of provided from
      *
      * @param ContainerInterface $form
@@ -76,10 +84,13 @@ class AddElements implements WorkerInterface
     }
 
     /**
-     * @param $element
+     * Recursively creates the elements to add to the form
+     *
+     * @param array $element
+     *
      * @return ElementInterface
      */
-    protected static function create($element)
+    protected static function create(array $element)
     {
         $class = self::getClassName($element['type']);
         $object = new $class;
@@ -89,8 +100,15 @@ class AddElements implements WorkerInterface
         return $object;
     }
 
-    protected static function populateInputs($input, $data)
-    {
+    /**
+     * Sets the properties and dependencies for input elements
+     *
+     * @param ElementInterface $input
+     * @param array $data
+     */
+    protected static function populateInputs(
+        ElementInterface $input, array $data
+    ) {
         if ($input instanceof InputInterface) {
             self::addLabel($input, $data);
             self::addValidators($input, $data);
@@ -100,7 +118,13 @@ class AddElements implements WorkerInterface
         self::populateElement($input, $data);
     }
 
-    protected static function populateElement(ElementInterface $elm, $data)
+    /**
+     * Sets the properties and dependencies for HTML elements
+     *
+     * @param ElementInterface $elm
+     * @param array $data
+     */
+    protected static function populateElement(ElementInterface $elm, array $data)
     {
         self::setValue($elm, $data);
 
@@ -115,6 +139,12 @@ class AddElements implements WorkerInterface
         }
     }
 
+    /**
+     * Adds the value to the element
+     *
+     * @param ElementInterface $elm
+     * @param array $data
+     */
     protected static function setValue(ElementInterface $elm, $data)
     {
         if (isset($data['value'])) {
@@ -122,11 +152,41 @@ class AddElements implements WorkerInterface
         }
     }
 
+    /**
+     * Check the element alias or FQ class name
+     *
+     * @param string $type
+     *
+     * @return string The Element class name
+     */
     protected static function getClassName($type)
     {
-        return self::$elements[$type];
+        if (in_array($type, array_keys(self::$elements))) {
+            $type = self::$elements[$type];
+        }
+
+        if (!class_exists($type)) {
+            throw new InvalidArgumentException(
+                "Input class '{$type}' does not exists."
+            );
+        }
+
+        if (! is_subclass_of($type, ElementInterface::class)) {
+            throw new InvalidArgumentException(
+                "The class '{$type}' does not implement the " .
+                "Slick\\Form\\ElementInterface interface."
+            );
+        }
+
+        return $type;
     }
 
+    /**
+     * Add filter to the input filter chain
+     *
+     * @param InputInterface $input
+     * @param array $data
+     */
     protected static function setFilters(InputInterface $input, array $data)
     {
         $hasFilters = isset($data['filters']) && is_array($data['filters']);
@@ -139,6 +199,12 @@ class AddElements implements WorkerInterface
         }
     }
 
+    /**
+     * Add validators to the input validator chain
+     *
+     * @param InputInterface $input
+     * @param array $data
+     */
     protected static function addValidators(InputInterface $input, array $data)
     {
         $hasValidators = isset($data['validates']) && is_array($data['validates']);
@@ -147,10 +213,17 @@ class AddElements implements WorkerInterface
         }
 
         foreach ($data['validates'] as $validator => $message) {
+            self::checkIfRequired($validator, $input);
             $input->addValidator($validator, $message);
         }
     }
 
+    /**
+     * Adds the html Label element to input
+     *
+     * @param InputInterface $input
+     * @param array $data
+     */
     protected static function addLabel(InputInterface $input, array $data)
     {
         if (!isset($data['label'])) {
@@ -162,9 +235,21 @@ class AddElements implements WorkerInterface
         }
 
         $label = new Label('', $data['label']['value']);
-        self::populateElement($label, $data);
+        self::populateElement($label, $data['label']);
         $input->setLabel($label);
     }
 
+    /**
+     * Check if validator triggers the required attribute
+     *
+     * @param string $name Validator name
+     * @param InputInterface $input
+     */
+    protected static function checkIfRequired($name, InputInterface $input)
+    {
+        if (in_array($name, self::$triggerRequired)) {
+            $input->setAttribute('required');
+        }
+    }
 
 }
