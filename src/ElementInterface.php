@@ -105,4 +105,17 @@ interface ElementInterface
      * @return self|$this|ElementInterface
      */
     public function setAttributes(AttributesMapInterface $attributes);
+
+    /**
+     * Returns the HTML string for current element
+     *
+     * @return string
+     */
+    public function render();
+
+    /**
+     * Returns the HTML string for this element
+     * @return string
+     */
+    public function __toString();
 }

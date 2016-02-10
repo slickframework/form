@@ -14,6 +14,8 @@ use Slick\Form\ElementInterface;
 use Slick\Form\Input\Text;
 use Slick\Form\Input\ValidationAwareInterface;
 use Slick\Form\InputInterface;
+use Slick\Form\Renderer\Div;
+use Slick\Form\Renderer\RendererInterface;
 
 /**
  * FieldSet
@@ -27,6 +29,11 @@ class FieldSet extends AbstractCollection implements ContainerInterface
      * Add attribute manipulation methods
      */
     use AttributesAwareMethods;
+
+    /**
+     * Add render capabilities to element
+     */
+    use RenderAwareMethods;
 
     /**
      * @var string
@@ -182,5 +189,15 @@ class FieldSet extends AbstractCollection implements ContainerInterface
     public function offsetSet($offset, $value)
     {
         $this->add($value);
+    }
+
+    /**
+     * Gets the HTML renderer for this element
+     *
+     * @return RendererInterface
+     */
+    protected function getRenderer()
+    {
+        return new Div();
     }
 }

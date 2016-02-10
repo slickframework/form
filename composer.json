@@ -32,7 +32,8 @@
     "slick/validator": "^1.1",
     "slick/filter": "^1.1",
     "slick/http": "^1.2",
-    "symfony/yaml": "~2.1"
+    "symfony/yaml": "~2.1",
+    "slick/template": "^1.1"
   },
   "require-dev": {
     "phpunit/phpunit": "4.*",

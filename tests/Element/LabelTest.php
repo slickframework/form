@@ -53,4 +53,10 @@ class LabelTest extends TestCase
     {
         $this->assertEquals('inputId', $this->label->getAttribute('for', ''));
     }
+
+    public function testOutput()
+    {
+        $expected = '<label for="" ></label>';
+        $this->assertEquals($expected, $this->label->render());
+    }
 }

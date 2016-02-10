@@ -9,9 +9,8 @@
 
 namespace Slick\Form\Element;
 
-use Slick\Form\ElementInterface;
-use Slick\Form\Utils\AttributesMap;
-use Slick\Form\Utils\AttributesMapInterface;
+use Slick\Form\Renderer\Div;
+use Slick\Form\Renderer\RendererInterface;
 
 /**
  * Abstract Element: base element interface implementations
@@ -28,6 +27,11 @@ abstract class AbstractElement
     use AttributesAwareMethods;
 
     /**
+     * Add render capabilities to element
+     */
+    use RenderAwareMethods;
+
+    /**
      * @var string|mixed
      */
     protected $value;
@@ -36,6 +40,16 @@ abstract class AbstractElement
      * @var null|string
      */
     protected $name = null;
+
+    /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = Div::class;
+
+    /**
+     * @var RendererInterface
+     */
+    protected $renderer;
 
     /**
      * Gets the element value
@@ -83,6 +97,32 @@ abstract class AbstractElement
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Gets the HTML renderer for this element
+     *
+     * @return RendererInterface
+     */
+    protected function getRenderer()
+    {
+        if (null === $this->renderer) {
+            $this->setRenderer(new $this->rendererClass());
+        }
+        return $this->renderer;
+    }
+
+    /**
+     * Sets internal renderer
+     *
+     * @param RendererInterface $renderer
+     *
+     * @return $this|self|AbstractElement
+     */
+    protected function setRenderer(RendererInterface $renderer)
+    {
+        $this->renderer = $renderer;
         return $this;
     }
 }

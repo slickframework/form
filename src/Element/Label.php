@@ -10,6 +10,7 @@
 namespace Slick\Form\Element;
 
 use Slick\Form\ElementInterface;
+use Slick\Form\Renderer\Label as LabelRenderer;
 
 /**
  * HTML Label element
@@ -19,6 +20,11 @@ use Slick\Form\ElementInterface;
  */
 class Label extends AbstractElement implements ElementInterface
 {
+
+    /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = LabelRenderer::class;
 
     /**
      * Label constructor.
