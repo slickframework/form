@@ -139,4 +139,27 @@ class FieldSetTest extends TestCase
                 ->isValid()
         );
     }
+
+    public function testOutput()
+    {
+        $input = new Text();
+        $input->setLabel('Name')
+            ->setName('name')
+            ->setValue('Jon Doe');
+        $input->setAttribute('class', 'my-class')
+            ->setAttribute('required');
+        $this->fieldSet->add($input)
+            ->setValue('Test');
+        $expects = <<<EOS
+<fieldset >
+    <legend>Test</legend>
+    <div class="form-group">
+    <label for="input-name">Name</label>
+    <input type="text" id="input-name" name="name" value="Jon Doe" class="my-class form-control" required>
+</div>
+</fieldset>
+EOS;
+        $this->assertEquals($expects, $this->fieldSet->render());
+
+    }
 }

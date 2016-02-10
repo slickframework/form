@@ -19,7 +19,6 @@ use Slick\Form\InputInterface;
  */
 class Text extends AbstractInput implements InputInterface
 {
-
     /**
      * Crates the input with the attribute type as text
      */

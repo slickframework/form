@@ -15,7 +15,7 @@ class Div extends AbstractRenderer implements RendererInterface
     /**
      * @var string The template file to use in the rendering
      */
-    public $template = 'templates/default.twig';
+    public $template = 'form-elements/default.twig';
 
     /**
      * Render the HTML element in the provided context

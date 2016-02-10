@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ccfdd3233460512e5cf312cac02736af",
-    "content-hash": "afabc7862dcbd4df55e83718318295a1",
+    "hash": "9cec44ae10316fc00189ad5ecc095fcf",
+    "content-hash": "7b106da9f6267f8b2263a19cfbb9c5d1",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -456,62 +456,6 @@
             "time": "2016-01-11 16:49:11"
         },
         {
-            "name": "slick/configuration",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/slickframework/configuration.git",
-                "reference": "90716b4aefd0d8c2e2657d795bfd34a48b993d7a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/configuration/zipball/90716b4aefd0d8c2e2657d795bfd34a48b993d7a",
-                "reference": "90716b4aefd0d8c2e2657d795bfd34a48b993d7a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "slick/common": "@dev"
-            },
-            "require-dev": {
-                "behat/behat": "~3.0.4",
-                "phpunit/phpunit": "4.*",
-                "scrutinizer/ocular": "~1.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev",
-                    "dev-develop": "1.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Slick\\Configuration\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Filipe Silva",
-                    "email": "silvam.filipe@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Slick/Configuration is a simple package that deals with configuration files.",
-            "homepage": "https://github.com/slickframework/configuration",
-            "keywords": [
-                "arrays",
-                "configuration",
-                "ini",
-                "slick"
-            ],
-            "time": "2015-08-28 16:35:34"
-        },
-        {
             "name": "slick/filter",
             "version": "dev-develop",
             "source": {
@@ -620,21 +564,20 @@
         },
         {
             "name": "slick/i18n",
-            "version": "dev-master",
+            "version": "dev-feature/1.2.x",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slickframework/i18n.git",
-                "reference": "5a037b4ded48190c6607e577f755afad7ef8989a"
+                "reference": "b3d4d07d2e6d8163d32632a762ac0e769b8e05a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/i18n/zipball/5a037b4ded48190c6607e577f755afad7ef8989a",
-                "reference": "5a037b4ded48190c6607e577f755afad7ef8989a",
+                "url": "https://api.github.com/repos/slickframework/i18n/zipball/b3d4d07d2e6d8163d32632a762ac0e769b8e05a2",
+                "reference": "b3d4d07d2e6d8163d32632a762ac0e769b8e05a2",
                 "shasum": ""
             },
             "require": {
                 "slick/common": "@dev",
-                "slick/configuration": "1.2.x-dev",
                 "zendframework/zend-i18n": ">=2.2.5",
                 "zendframework/zend-servicemanager": "2.2.5"
             },
@@ -673,7 +616,7 @@
                 "slick",
                 "translation"
             ],
-            "time": "2016-01-05 16:08:58"
+            "time": "2016-01-07 16:51:26"
         },
         {
             "name": "slick/template",
@@ -681,17 +624,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/slickframework/template.git",
-                "reference": "d844cef5b0d512cc5a2d7ab51540badc52a383b4"
+                "reference": "19ae5c9f1228d92cc06a16933598bfe836169943"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/template/zipball/d844cef5b0d512cc5a2d7ab51540badc52a383b4",
-                "reference": "d844cef5b0d512cc5a2d7ab51540badc52a383b4",
+                "url": "https://api.github.com/repos/slickframework/template/zipball/19ae5c9f1228d92cc06a16933598bfe836169943",
+                "reference": "19ae5c9f1228d92cc06a16933598bfe836169943",
                 "shasum": ""
             },
             "require": {
                 "slick/common": "@dev",
-                "slick/i18n": "1.0.x-dev",
+                "slick/i18n": "dev-feature/1.2.x",
                 "twig/twig": "~v1.15",
                 "zendframework/zend-http": "^2.5"
             },
@@ -703,8 +646,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev",
-                    "dev-develop": "1.1-dev"
+                    "dev-master": "1.2-dev",
+                    "dev-develop": "1.3-dev"
                 }
             },
             "autoload": {
@@ -730,7 +673,7 @@
                 "template",
                 "twig"
             ],
-            "time": "2016-01-07 19:21:08"
+            "time": "2016-02-10 11:42:02"
         },
         {
             "name": "slick/validator",

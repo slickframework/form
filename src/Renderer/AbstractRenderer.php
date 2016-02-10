@@ -32,6 +32,16 @@ abstract class AbstractRenderer
     protected $engine;
 
     /**
+     * Creates an abstract render with element dependency.
+     *
+     * @param ElementInterface|null $element
+     */
+    public function __construct(ElementInterface $element = null)
+    {
+        $this->element = $element;
+    }
+
+    /**
      * Returns current element
      *
      * @return ElementInterface
@@ -80,6 +90,25 @@ abstract class AbstractRenderer
     {
         $this->engine = $engine;
         return $this;
+    }
+
+    /**
+     * Returns the elements's attributes as a string
+     *
+     * @return string
+     */
+    public function getAttributes()
+    {
+        $result = [];
+        foreach ($this->element->getAttributes() as $attribute => $value) {
+            if (null === $value) {
+                $result[] = $attribute;
+                continue;
+            }
+
+            $result[] = "{$attribute}=\"{$value}\"";
+        }
+        return implode(' ', $result);
     }
 
 }

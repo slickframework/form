@@ -1,0 +1,5 @@
+{% extends 'form-inputs/text.twig' %}
+{% block input %}
+
+    <textarea {{ renderer.getAttributes|raw }}>{{ element.getValue }}</textarea>
+{%- endblock %}

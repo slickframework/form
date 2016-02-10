@@ -10,17 +10,15 @@
 namespace Slick\Form\Renderer;
 
 /**
- * HTML Label renderer
+ * HTML Select renderer
  *
  * @package Slick\Form\Renderer
- * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
-class Label extends Div implements RendererInterface
+class Select extends Input
 {
 
     /**
      * @var string The template file to use in the rendering
      */
-    public $template = 'form-elements/label.twig';
-
+    public $template = 'form-inputs/select.twig';
 }

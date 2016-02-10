@@ -14,6 +14,7 @@ use Slick\Form\Element\Label;
 use Slick\Form\ElementInterface;
 use Slick\Form\Exception\InvalidArgumentException;
 use Slick\Form\InputInterface;
+use Slick\Form\Renderer\Input;
 
 /**
  * Abstract Input: base input interface implementations
@@ -44,6 +45,11 @@ abstract class AbstractInput extends AbstractElement
     use FilterAwareMethods;
 
     /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = Input::class;
+
+    /**
      * Get input name
      *
      * @return mixed
@@ -64,6 +70,9 @@ abstract class AbstractInput extends AbstractElement
     {
         $this->setAttribute('name', $name);
         $this->name = $name;
+        if ($label = $this->getLabel()) {
+            $this->getLabel()->setAttribute('for', $this->generateId());
+        }
         return $this;
     }
 
@@ -108,6 +117,12 @@ abstract class AbstractInput extends AbstractElement
     public function getRawValue()
     {
         return $this->value;
+    }
+
+    public function setValue($value)
+    {
+        $this->setAttribute('value', $value);
+        return parent::setValue($value);
     }
 
     /**

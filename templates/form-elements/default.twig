@@ -1,0 +1,4 @@
+{% from 'form-utils.twig' import utils %}
+{% set tagName = tagName ?: 'div' %}
+<{{ tagName }} {{ renderer.getAttributes|raw }}>{% block content %}{{ translate(element.value) }}{% endblock %}
+</{{ tagName }}>

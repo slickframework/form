@@ -12,6 +12,7 @@ namespace Slick\Form\Input;
 use Slick\Form\Element\ChoiceAwareElementInterface;
 use Slick\Form\Element\ChoiceAwareElementMethods;
 use Slick\Form\InputInterface;
+use Slick\Form\Renderer\Select as SelectRenderer;
 
 /**
  * Select input
@@ -29,5 +30,25 @@ class Select extends AbstractInput implements
      */
     use ChoiceAwareElementMethods;
 
+    /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = SelectRenderer::class;
+
+    /**
+     * Adds the value to the select
+     *
+     * Mainly it removes the entry in the attributes list
+     *
+     * @param mixed $value
+     *
+     * @return $this|self|Select
+     */
+    public function setValue($value)
+    {
+        parent::setValue($value);
+        $this->getAttributes()->remove('value');
+        return $this;
+    }
 
 }

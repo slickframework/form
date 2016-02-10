@@ -9,6 +9,7 @@
 
 namespace Slick\Form\Element;
 
+use Slick\Form\ElementInterface;
 use Slick\Form\Renderer\Div;
 use Slick\Form\Renderer\RendererInterface;
 
@@ -18,7 +19,7 @@ use Slick\Form\Renderer\RendererInterface;
  * @package Slick\Form\Element
  * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
-abstract class AbstractElement
+abstract class AbstractElement implements ElementInterface
 {
 
     /**

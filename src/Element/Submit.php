@@ -10,6 +10,7 @@
 namespace Slick\Form\Element;
 
 use Slick\Form\ElementInterface;
+use Slick\Form\Renderer\Button as ButtonRenderer;
 
 /**
  * HTML form submit button
@@ -20,4 +21,16 @@ use Slick\Form\ElementInterface;
 class Submit extends AbstractElement implements ElementInterface
 {
 
+    /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = ButtonRenderer::class;
+
+    /**
+     * Submit constructor.
+     */
+    public function __construct()
+    {
+        $this->getAttributes()->set('type', 'submit');
+    }
 }

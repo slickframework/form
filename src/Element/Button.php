@@ -9,8 +9,8 @@
 
 namespace Slick\Form\Element;
 
-use Slick\Form\Element\AbstractElement;
 use Slick\Form\ElementInterface;
+use Slick\Form\Renderer\Button as ButtonRenderer;
 
 /**
  * Button input
@@ -20,4 +20,16 @@ use Slick\Form\ElementInterface;
 class Button extends AbstractElement implements ElementInterface
 {
 
+    /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = ButtonRenderer::class;
+
+    /**
+     * Submit constructor.
+     */
+    public function __construct()
+    {
+        $this->getAttributes()->set('type', 'button');
+    }
 }

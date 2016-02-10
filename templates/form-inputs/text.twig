@@ -1,0 +1,8 @@
+<div class="form-group">
+    {{ element.label|raw }}
+    {%- block input %}
+
+    <input {{ renderer.getAttributes|raw }}>
+    {%- endblock %}
+
+</div>

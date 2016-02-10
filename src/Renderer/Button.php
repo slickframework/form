@@ -10,17 +10,15 @@
 namespace Slick\Form\Renderer;
 
 /**
- * HTML Label renderer
+ * HTML Button renderer
  *
  * @package Slick\Form\Renderer
- * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
-class Label extends Div implements RendererInterface
+class Button extends Div implements RendererInterface
 {
 
     /**
      * @var string The template file to use in the rendering
      */
-    public $template = 'form-elements/label.twig';
-
+    public $template = 'form-elements/button.twig';
 }

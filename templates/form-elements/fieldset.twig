@@ -1,0 +1,8 @@
+{% extends 'form-elements/default.twig' %}
+{% set tagName = 'fieldset' %}
+{% block content %}{% if element.value %}
+
+    <legend>{{ element.value }}</legend>
+{% endif %}{% for item in element %}
+    {{ item.render|raw }}
+{% endfor %}{% endblock %}

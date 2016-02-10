@@ -1,0 +1,9 @@
+{% extends 'form-inputs/text.twig' %}
+{% block input %}
+
+    <select {{ renderer.getAttributes|raw }}>
+        {% for value, option in element.getOptions -%}
+        <option{{ value == element.getValue ? ' selected' }} value="{{ value }}">{{ option }}</option>
+        {% endfor %}
+</select>
+{%- endblock %}

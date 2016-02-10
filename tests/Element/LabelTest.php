@@ -56,7 +56,7 @@ class LabelTest extends TestCase
 
     public function testOutput()
     {
-        $expected = '<label for="" ></label>';
-        $this->assertEquals($expected, $this->label->render());
+        $expected = '<label for="inputId">test</label>';
+        $this->assertEquals($expected, (string) $this->label);
     }
 }

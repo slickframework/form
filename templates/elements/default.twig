@@ -1,3 +1,0 @@
-{% from 'form-utils.twig' import utils %}
-{% set tagName = tagName ?: 'div' %}
-<{{ tagName }} {{ utils.renderAttributes(element.getAttributes) }}>{{ translate(element.value) }}</{{ tagName }}>

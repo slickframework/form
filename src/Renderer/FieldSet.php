@@ -10,17 +10,16 @@
 namespace Slick\Form\Renderer;
 
 /**
- * HTML Label renderer
+ * HTML FieldSet renderer
  *
  * @package Slick\Form\Renderer
  * @author  Filipe Silva <silvam.filipe@gmail.com>
  */
-class Label extends Div implements RendererInterface
+class FieldSet extends Div implements RendererInterface
 {
 
     /**
      * @var string The template file to use in the rendering
      */
-    public $template = 'form-elements/label.twig';
-
+    public $template = 'form-elements/fieldset.twig';
 }

@@ -11,10 +11,9 @@ namespace Slick\Form\Element;
 
 use Slick\Common\Utils\Collection\AbstractCollection;
 use Slick\Form\ElementInterface;
-use Slick\Form\Input\Text;
 use Slick\Form\Input\ValidationAwareInterface;
 use Slick\Form\InputInterface;
-use Slick\Form\Renderer\Div;
+use Slick\Form\Renderer\FieldSet as FieldSetRenderer;
 use Slick\Form\Renderer\RendererInterface;
 
 /**
@@ -198,6 +197,6 @@ class FieldSet extends AbstractCollection implements ContainerInterface
      */
     protected function getRenderer()
     {
-        return new Div();
+        return new FieldSetRenderer($this);
     }
 }

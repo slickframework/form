@@ -10,6 +10,7 @@
 namespace Slick\Form\Input;
 
 use Slick\Form\InputInterface;
+use Slick\Form\Renderer\TextArea as AreaRenderer;
 
 /**
  * Text Area input
@@ -20,4 +21,24 @@ use Slick\Form\InputInterface;
 class TextArea extends AbstractInput implements InputInterface
 {
 
+    /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = AreaRenderer::class;
+
+    /**
+     * Adds the value to the select
+     *
+     * Mainly it removes the entry in the attributes list
+     *
+     * @param mixed $value
+     *
+     * @return $this|self|Select
+     */
+    public function setValue($value)
+    {
+        parent::setValue($value);
+        $this->getAttributes()->remove('value');
+        return $this;
+    }
 }
