@@ -95,4 +95,20 @@ class FormTest extends TestCase
             $this->form->getData()
         );
     }
+
+    public function testOutput()
+    {
+        $form = new Form();
+        $button = new Button();
+        $button->setName('test')
+            ->setValue('Test');
+        $form->add($button);
+        $expected = <<<EOHTML
+<form action="" method="post">
+    <button type="button">Test</button>
+</form>
+EOHTML;
+        $this->assertEquals($expected, $form->render());
+
+    }
 }

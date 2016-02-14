@@ -12,6 +12,9 @@ namespace Slick\Form;
 use Psr\Http\Message\ServerRequestInterface;
 use Slick\Form\Element\ContainerInterface;
 use Slick\Form\Element\FieldSet;
+use Slick\Form\Element\RenderAwareMethods;
+use Slick\Form\Renderer\Form as FormRenderer;
+use Slick\Form\Renderer\RendererInterface;
 
 /**
  * HTTP Form
@@ -21,6 +24,11 @@ use Slick\Form\Element\FieldSet;
  */
 class Form extends FieldSet implements FormInterface
 {
+
+    /**
+     * Add render capabilities to element
+     */
+    use RenderAwareMethods;
 
     /**
      * Creates a form with basic attributes
@@ -96,5 +104,15 @@ class Form extends FieldSet implements FormInterface
                  continue;
              }
         }
+    }
+
+    /**
+     * Gets the HTML renderer for this element
+     *
+     * @return RendererInterface
+     */
+    protected function getRenderer()
+    {
+        return new FormRenderer($this);
     }
 }
