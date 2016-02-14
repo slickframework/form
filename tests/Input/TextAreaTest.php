@@ -46,4 +46,19 @@ class TextAreaTest extends TestCase
         $this->textArea->setValue('test');
         $this->assertFalse($this->textArea->getAttributes()->containsKey('value'));
     }
+
+    public function testOutput()
+    {
+        $expected = <<<HTML
+<div class="form-group">
+    <label for="input-address">Address</label>
+    <textarea name="address" id="input-address" class="form-control">test</textarea>
+</div>
+HTML;
+        $this->textArea
+            ->setValue("test")
+            ->setName('address')
+            ->setLabel('Address');
+        $this->assertEquals($expected, $this->textArea->render());
+    }
 }
