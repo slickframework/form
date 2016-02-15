@@ -26,6 +26,11 @@ class Form extends FieldSet implements FormInterface
 {
 
     /**
+     * @var string Form id
+     */
+    protected $id;
+
+    /**
      * Add render capabilities to element
      */
     use RenderAwareMethods;
@@ -114,5 +119,28 @@ class Form extends FieldSet implements FormInterface
     protected function getRenderer()
     {
         return new FormRenderer($this);
+    }
+
+    /**
+     * Gets the form id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Sets internal form ID
+     *
+     * @param string $formId
+     *
+     * @return self|$this|FormInterface
+     */
+    public function setId($formId)
+    {
+        $this->id = $formId;
+        return $this;
     }
 }

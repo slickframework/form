@@ -10,6 +10,7 @@
 namespace Slick\Form\Parser\Worker;
 
 use Slick\Form\Element\ContainerInterface;
+use Slick\Form\FormInterface;
 use Slick\Form\Input\Hidden;
 use Slick\Form\Parser\WorkerInterface;
 
@@ -24,7 +25,7 @@ class FormId implements WorkerInterface
     /**
      * Adds or changes a specific aspect of provided from
      *
-     * @param ContainerInterface $form
+     * @param ContainerInterface|FormInterface $form
      * @param array $data
      *
      * @return void
@@ -34,6 +35,9 @@ class FormId implements WorkerInterface
         $input = new Hidden();
         $input->setValue($data['id'])
             ->setName('form-id');
+        if ($form instanceof FormInterface) {
+            $form->setId($data['id']);
+        }
         $form->add($input);
     }
 }

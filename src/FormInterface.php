@@ -22,6 +22,22 @@ interface FormInterface extends ContainerInterface
 {
 
     /**
+     * Gets the form id
+     *
+     * @return string
+     */
+    public function getId();
+
+    /**
+     * Sets internal form ID
+     *
+     * @param string $formId
+     *
+     * @return self|$this|FormInterface
+     */
+    public function setId($formId);
+
+    /**
      * Set data to validate and/or populate elements
      *
      * @param array $data

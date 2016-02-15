@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9cec44ae10316fc00189ad5ecc095fcf",
-    "content-hash": "7b106da9f6267f8b2263a19cfbb9c5d1",
+    "hash": "6d083894b27ca753037ae02919174ea4",
+    "content-hash": "e5778411d3b6cea740d54e2a66c28425",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -79,7 +79,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/581943b46d0736605e4ef4676e9a820bbfff7388",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/b59321a17f3e3ebc14f2bbbf73b4d065a88cf3f6",
                 "reference": "581943b46d0736605e4ef4676e9a820bbfff7388",
                 "shasum": ""
             },
@@ -177,6 +177,56 @@
                 "uri"
             ],
             "time": "2016-01-23 01:23:02"
+        },
+        {
+            "name": "league/event",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/event.git",
+                "reference": "36920cc97c1e506b07f979337a49c4dd02d57045"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/event/zipball/36920cc97c1e506b07f979337a49c4dd02d57045",
+                "reference": "36920cc97c1e506b07f979337a49c4dd02d57045",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "~1.0.1",
+                "phpspec/phpspec": "^2.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Event\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Event package",
+            "keywords": [
+                "emitter",
+                "event",
+                "listener"
+            ],
+            "time": "2015-12-21 15:06:01"
         },
         {
             "name": "monolog/monolog",
@@ -739,7 +789,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/33fd1b2cfdde601704665fad343014bba04b0753",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/871f18db4b0c115e19dfaf339df18c4d76e43602",
                 "reference": "33fd1b2cfdde601704665fad343014bba04b0753",
                 "shasum": ""
             },
@@ -999,7 +1049,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/19e2258629ecc9a6b947c61c500715376b65eafb",
+                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/9062fee896f8e60bb35a7342600d7e7096a1ce65",
                 "reference": "19e2258629ecc9a6b947c61c500715376b65eafb",
                 "shasum": ""
             },
@@ -2083,7 +2133,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/e55e3e32a870bd4f05425fa4f717b52bd40e5659",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3c91bdf81797d725b14cb62906f9a4ce44235972",
                 "reference": "e55e3e32a870bd4f05425fa4f717b52bd40e5659",
                 "shasum": ""
             },
@@ -2385,7 +2435,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1ae3a683f38fe24d4b69ef35da82bd211e1894fb",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6e351261f9cd33daf205a131a1ba61c6d33bd483",
                 "reference": "1ae3a683f38fe24d4b69ef35da82bd211e1894fb",
                 "shasum": ""
             },
@@ -2975,7 +3025,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/f4d8e2236db888c708d934975070ff6f0a332a24",
+                "url": "https://api.github.com/repos/symfony/config/zipball/04c7f1bb7884b53286a4318a3c225fdfdaf651d7",
                 "reference": "f4d8e2236db888c708d934975070ff6f0a332a24",
                 "shasum": ""
             },
@@ -3085,7 +3135,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/478a98846ef14fac480f40f8ca4e58e99c8045bf",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/b8ac02832bc1ef825bda5f319e7ec1857165ca47",
                 "reference": "478a98846ef14fac480f40f8ca4e58e99c8045bf",
                 "shasum": ""
             },
