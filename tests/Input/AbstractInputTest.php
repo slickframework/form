@@ -13,6 +13,7 @@ use PHPUnit_Framework_TestCase as TestCase;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use Slick\Form\Element\Label;
 use Slick\Form\Input\AbstractInput;
+use Slick\Form\Utils\AttributesMapInterface;
 
 /**
  * Abstract Input test case
@@ -35,7 +36,7 @@ class AbstractInputTest extends TestCase
     {
         parent::setUp();
         $this->input = $this->getMockBuilder(AbstractInput::class)
-            ->setMethods(['getAttribute', 'setAttribute'])
+            ->setMethods(['getAttribute', 'setAttribute', 'getAttributes'])
             ->getMockForAbstractClass();
     }
 
@@ -163,5 +164,42 @@ class AbstractInputTest extends TestCase
     {
         $this->input->setValue('test');
         $this->assertEquals('test', $this->input->getRawValue());
+    }
+
+    /**
+     * Should remove the attribute if required is false
+     * @test
+     */
+    public function setRequired()
+    {
+        $map = $this->getAttributesMapMocked();
+        $map->expects($this->once())
+            ->method('containsKey')
+            ->with('required')
+            ->willReturn(true);
+        $map->expects($this->once())
+            ->method('remove')
+            ->with('required');
+        $this->input->expects($this->atLeastOnce())
+            ->method('getAttributes')
+            ->willReturn($map);
+        $this->input->setRequired(false);
+
+    }
+
+    /**
+     * Gets a mocked attributes map
+     *
+     * @return MockObject|AttributesMapInterface
+     */
+    protected function getAttributesMapMocked()
+    {
+        $class = AttributesMapInterface::class;
+        $methods = get_class_methods($class);
+        /** @var MockObject|AttributesMapInterface $map */
+        $map = $this->getMockBuilder($class)
+            ->setMethods($methods)
+            ->getMock();
+        return $map;
     }
 }

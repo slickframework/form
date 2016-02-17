@@ -41,7 +41,7 @@ final class FormRegistry extends Emitter implements EmitterInterface
      */
     private function __construct()
     {
-        // Prevent
+        // Prevent creation, allowing for singleton pattern
     }
 
     /**

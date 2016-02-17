@@ -51,13 +51,14 @@ class TextAreaTest extends TestCase
     {
         $expected = <<<HTML
 <div class="form-group">
-    <label for="input-address">Address</label>
-    <textarea name="address" id="input-address" class="form-control">test</textarea>
+    <label for="input-address">Address <span class="required">*</span></label>
+    <textarea name="address" required id="input-address" class="form-control">test</textarea>
 </div>
 HTML;
         $this->textArea
             ->setValue("test")
             ->setName('address')
+            ->setRequired(true)
             ->setLabel('Address');
         $this->assertEquals($expected, $this->textArea->render());
     }

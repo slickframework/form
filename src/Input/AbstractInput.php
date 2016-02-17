@@ -15,6 +15,7 @@ use Slick\Form\ElementInterface;
 use Slick\Form\Exception\InvalidArgumentException;
 use Slick\Form\InputInterface;
 use Slick\Form\Renderer\Input;
+use Slick\I18n\TranslateMethods;
 
 /**
  * Abstract Input: base input interface implementations
@@ -35,6 +36,11 @@ abstract class AbstractInput extends AbstractElement
     protected $label;
 
     /**
+     * @var bool
+     */
+    protected $required = false;
+
+    /**
      * Add validation methods
      */
     use ValidationAwareMethods;
@@ -43,6 +49,11 @@ abstract class AbstractInput extends AbstractElement
      * Add filter methods
      */
     use FilterAwareMethods;
+
+    /**
+     * Needed for label translation
+     */
+    use TranslateMethods;
 
     /**
      * @var string Renderer class
@@ -122,6 +133,7 @@ abstract class AbstractInput extends AbstractElement
     public function setValue($value)
     {
         $this->setAttribute('value', $value);
+        $this->valid = null;
         return parent::setValue($value);
     }
 
@@ -150,7 +162,7 @@ abstract class AbstractInput extends AbstractElement
             return $label;
         }
 
-        return $this->createLabel($label);
+        return $this->createLabel($this->translate($label));
     }
 
     /**
@@ -194,5 +206,36 @@ abstract class AbstractInput extends AbstractElement
 
         $label = new $class('', ucfirst($this->getName()));
         return $label;
+    }
+
+    /**
+     * Check if this input is required to be filled
+     *
+     * @return bool
+     */
+    public function isRequired()
+    {
+        return $this->required;
+    }
+
+    /**
+     * Sets the required flag for this input
+     *
+     * @param boolean $required
+     *
+     * @return $this|self|InputInterface
+     */
+    public function setRequired($required)
+    {
+        $this->required = (boolean) $required;
+        if ($this->isRequired()) {
+            $this->setAttribute('required');
+            return $this;
+        }
+
+        if ($this->getAttributes()->containsKey('required')) {
+                $this->getAttributes()->remove('required');
+        }
+        return $this;
     }
 }

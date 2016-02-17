@@ -11,6 +11,8 @@ namespace Slick\Form\Input;
 
 use Slick\Form\ElementInterface;
 use Slick\Form\Exception\InvalidArgumentException;
+use Slick\Form\InputInterface;
+use Slick\Validator\NotEmpty;
 use Slick\Validator\StaticValidator;
 use Slick\Validator\ValidationChain;
 use Slick\Validator\ValidationChainInterface;
@@ -31,6 +33,11 @@ trait ValidationAwareMethods
     protected $validationChain;
 
     /**
+     * @var boolean
+     */
+    protected $valid;
+
+    /**
      * Gets the value to be validated
      *
      * @return mixed
@@ -46,8 +53,11 @@ trait ValidationAwareMethods
      */
     public function isValid()
     {
-        return $this->getValidationChain()
-            ->validates($this->getValue(), $this);
+        if (is_null($this->valid)) {
+            $this->valid = $this->getValidationChain()
+                ->validates($this->getValue(), $this);
+        }
+        return $this->valid;
     }
 
     /**
@@ -95,8 +105,12 @@ trait ValidationAwareMethods
     public function addValidator($validator, $message = null)
     {
         try {
+            $validator = StaticValidator::create($validator, $message);
             $this->getValidationChain()
-                ->add(StaticValidator::create($validator, $message));
+                ->add($validator);
+            if ($validator instanceof NotEmpty) {
+                $this->setRequired(true);
+            }
         } catch (ValidatorException $caught) {
             throw new InvalidArgumentException(
                 $caught->getMessage(),
@@ -106,4 +120,13 @@ trait ValidationAwareMethods
         }
         return $this;
     }
+
+    /**
+     * Sets the required flag for this input
+     *
+     * @param boolean $required
+     *
+     * @return $this|self|InputInterface
+     */
+    abstract public function setRequired($required);
 }

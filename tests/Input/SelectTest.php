@@ -51,8 +51,8 @@ class SelectTest extends TestCase
     {
         $expected = <<<HTML
 <div class="form-group">
-    <label for="input-options">Options</label>
-    <select name="options" id="input-options" class="form-control">
+    <label for="input-options">Options <span class="required">*</span></label>
+    <select name="options" required id="input-options" class="form-control">
         <option value="1">1</option>
         <option selected value="2">2</option>
         </select>
@@ -62,6 +62,7 @@ HTML;
             ->setValue(2)
             ->setOptions([1 => 1, 2 => 2])
             ->setName('options')
+            ->setRequired(true)
             ->setLabel('Options');
         $this->assertEquals($expected, $this->select->render());
 
