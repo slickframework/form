@@ -68,4 +68,11 @@ interface InputInterface extends
      */
     public function getRawValue();
 
+    /**
+     * Check if this input is required to be filled
+     *
+     * @return bool
+     */
+    public function isRequired();
+
 }

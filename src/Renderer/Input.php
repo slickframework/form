@@ -9,6 +9,8 @@
 namespace Slick\Form\Renderer;
 
 
+use Slick\Form\InputInterface;
+
 class Input extends Div implements RendererInterface
 {
 
@@ -26,6 +28,8 @@ class Input extends Div implements RendererInterface
      */
     public function render($context = [])
     {
+        $this->checkRequired();
+
         if ($element = $this->getElement()) {
             $class = $element->getAttribute('class', false);
             $class .= $class
@@ -35,6 +39,19 @@ class Input extends Div implements RendererInterface
         }
 
         return parent::render($context);
+    }
+
+    protected function checkRequired()
+    {
+        $element = $this->getElement();
+        if ($element instanceof InputInterface) {
+            $value = $element->getLabel()->getValue();
+            $value .= $element->isRequired()
+                ? ' <span class="required">*</span>'
+                : '';
+            $element->getLabel()->setValue($value);
+        }
+        return $this;
     }
 
 }
