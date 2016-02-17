@@ -132,7 +132,7 @@ class AddElementsTest extends TestCase
      */
     public function testAttributes(ElementInterface $label)
     {
-        $this->assertEquals('sr-only', $label->getAttribute('class'));
+        $this->assertEquals('control-label sr-only', $label->getAttribute('class'));
     }
 
     /**

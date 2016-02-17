@@ -50,8 +50,8 @@ class SelectTest extends TestCase
     public function testOutput()
     {
         $expected = <<<HTML
-<div class="form-group">
-    <label for="input-options">Options <span class="required">*</span></label>
+<div class="form-group required">
+    <label for="input-options" class="control-label">Options</label>
     <select name="options" required id="input-options" class="form-control">
         <option value="1">1</option>
         <option selected value="2">2</option>

@@ -50,8 +50,8 @@ class TextAreaTest extends TestCase
     public function testOutput()
     {
         $expected = <<<HTML
-<div class="form-group">
-    <label for="input-address">Address <span class="required">*</span></label>
+<div class="form-group required">
+    <label for="input-address" class="control-label">Address</label>
     <textarea name="address" required id="input-address" class="form-control">test</textarea>
 </div>
 HTML;

@@ -106,7 +106,9 @@ abstract class AbstractInput extends AbstractElement
     public function setLabel($label)
     {
         $this->label = $this->checkLabel($label);
-        $this->label->setAttribute('for', $this->generateId());
+        $class = $this->label->getAttribute('class');
+        $this->label->setAttribute('for', $this->generateId())
+            ->setAttribute('class', trim("control-label {$class}"));
         return $this;
     }
 
