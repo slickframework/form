@@ -1,0 +1,131 @@
+#!/bin/bash
+
+#
+# PHP built-in server script
+#
+
+# The server adress
+SERVERADDRESS="0.0.0.0:8585"
+
+BASEDIR=$(pwd)
+WEBROOTDIR=$BASEDIR'/tests'
+PIDFILE="build/phpserver.pid"
+PHPSERVERLOG="build/phpserver.log"
+
+# You should not change from this line
+FULLSTARTCOMMAND="php -S $SERVERADDRESS -t $WEBROOTDIR"
+
+usage ()
+{
+    echo -e "Usage:"
+    echo -e "\t$0 [OPTION]\n"
+    echo -e "start \tstarts the php built in server"
+    echo -e "stop \tstops the php built in server"
+    echo -e "stopall stops all processes with the same name as the server command"
+    echo -e "status \tshows if the php built in server is started or not\n"
+}
+
+isstarted ()
+{
+    echo `ps aux | grep -v grep | grep "$FULLSTARTCOMMAND" | wc -l`
+}
+
+arraycontains () {
+    local seeking=$1; shift
+    local in=1
+    for element; do
+        if [[ $element == $seeking ]]; then
+            in=0
+            break
+        fi
+    done
+    return $in
+}
+
+#by default:
+COMMAND="status"
+
+#verbosity=0
+if [ "$#" -ne 1 ]; then
+    echo -e "\e[0;31mIllegal number of parameters!\e[0m"
+    usage
+    exit 1
+fi
+
+ALLOWEDCOMMANDS=( "start" "stop" "stopall" "status" )
+
+arraycontains "$1" "${ALLOWEDCOMMANDS[@]}" && KNOWNCOMMAND="yes" || KNOWNCOMMAND="no"
+
+if [[ $KNOWNCOMMAND == "no" ]]; then
+    echo -e "\e[0;31mUnkown command '$1'!\e[0m"
+    usage
+    exit 1
+else
+    COMMAND=$1
+fi
+
+if [ "$COMMAND" == "start" ]; then
+    if [ `isstarted` -eq 1 ]; then
+        echo -e "\e[0;31mThe server is already started!\e[0m"
+        exit 0
+    fi
+    echo "Starting the PHP built-in server on: http://$SERVERADDRESS .."
+    `$FULLSTARTCOMMAND > $PHPSERVERLOG 2>&1 & echo $! > $PIDFILE`
+
+    if [ $? -eq 0 ]; then
+        echo "Ready!"
+        #echo "Showing the processes:"
+        #ps aux | grep "[p]hp -S"
+    else
+        echo -e "\e[0;31mFailed!\e[0m";
+        exit 1;
+    fi
+elif [ "$COMMAND" == "stop" ]; then
+    if [ `isstarted` -eq 0 ]; then
+        echo -e "\e[0;31mThe server is not running!\e[0m"
+        exit 0
+    fi
+    echo "Stopping the built-in PHP Server.."
+    kill -s TERM $(cat $PIDFILE)
+
+    if [ $? -eq 0 ]; then
+        rm $PIDFILE
+        rm $PHPSERVERLOG
+        echo "Ready!"
+    else
+        echo -e "\e[0;31mFailed!\e[0m";
+        exit 1;
+    fi
+elif [ "$COMMAND" == "stopall" ]; then
+    if [ `isstarted` -gt 0 ]; then
+        echo -e "\e[0;31mRunning server(s) found!\e[0m"
+        rm $PIDFILE
+        rm $PHPSERVERLOG
+    else
+        echo "No running servers found"
+        exit 0
+    fi
+    echo "Showing the processes:"
+    ps aux | grep "[p]hp -S"
+    echo "Killing the server(s).."
+    pkill -f "php -S"
+
+    if [ $? -eq 0 ]; then
+        rm $PIDFILE
+        rm $PHPSERVERLOG
+        echo "Ready!"
+    else
+        echo -e "\e[0;31mFailed!\e[0m";
+        exit 1;
+    fi
+elif [ "$COMMAND" = "status" ]; then
+    if [ `isstarted` -eq 1 ]; then
+        echo "The server is running"
+    else
+        echo "The server is stopped"
+    fi
+else
+    echo -e "\e[0;31mUnkown command '$COMMAND'!\e[0m"
+    usage
+    exit 1
+fi
