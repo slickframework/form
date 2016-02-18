@@ -75,4 +75,13 @@ interface InputInterface extends
      */
     public function isRequired();
 
+    /**
+     * Sets the required flag for this input
+     *
+     * @param boolean $required
+     *
+     * @return $this|self|InputInterface
+     */
+    public function setRequired($required);
+
 }

@@ -15,6 +15,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slick\Form\Element\Button;
 use Slick\Form\Element\FieldSet;
 use Slick\Form\Form;
+use Slick\Form\Input\File;
 use Slick\Form\Input\Text;
 
 /**
@@ -110,5 +111,13 @@ class FormTest extends TestCase
 EOHTML;
         $this->assertEquals($expected, $form->render());
 
+    }
+
+    public function testMultipartWithFile()
+    {
+        $input = new File();
+        $input->setName('test');
+        $this->form->add($input);
+        $this->assertEquals('multipart/form-data', $this->form->getAttribute('enctype'));
     }
 }

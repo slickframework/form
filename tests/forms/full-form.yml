@@ -1,0 +1,52 @@
+id: sandbox-form
+elements:
+  name:
+    type: text
+    label: Full name
+    validates:
+      notEmpty: You must provide your full name.
+    filters:
+      - text
+    attributes:
+      placeholder: Jon doe
+  picture:
+    type: file
+    label: Profile picture
+  public:
+    type: checkbox
+    label: Make my profile public
+  addressSet:
+    type: fieldset
+    value: Address
+    elements:
+      address:
+        type: textarea
+        label: Street address
+        attributes:
+          rows: 4
+      gender:
+        type: select
+        label: Gender
+        required: yes
+        options:
+          "-": -- Select one --
+          M: Male
+          F: Female
+        validates:
+          Slick\Tests\Form\Validator\Gender: Please choose the propert option for your gender.
+  buttonGroup:
+    type: fieldset
+    elements:
+      submit:
+        type: submit
+        value: Submit form
+        attributes:
+          class: btn btn-primary
+      reset:
+        type: reset
+        value: Reset
+        attributes:
+          class: btn btn-default
+    profileId:
+      type: hidden
+      value: 123456

@@ -22,9 +22,16 @@ interface ContainerInterface extends CollectionInterface, ElementInterface
 {
 
     /**
+     * Runs validation chain in all its elements
+     *
+     * @return self|$this|ElementInterface
+     */
+    public function validate();
+
+    /**
      * Checks if all elements are valid
      *
-     * @return mixed
+     * @return boolean
      */
     public function isValid();
 

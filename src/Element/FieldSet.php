@@ -52,6 +52,7 @@ class FieldSet extends AbstractCollection implements ContainerInterface
     public function isValid()
     {
         $valid = true;
+        $this->validate();
         foreach ($this->getIterator() as $element) {
             if ($element instanceof ValidationAwareInterface) {
                 $valid = $element->isValid()
@@ -198,5 +199,20 @@ class FieldSet extends AbstractCollection implements ContainerInterface
     protected function getRenderer()
     {
         return new FieldSetRenderer($this);
+    }
+
+    /**
+     * Runs validation chain in all its elements
+     *
+     * @return self|$this|ElementInterface
+     */
+    public function validate()
+    {
+        foreach ($this as $element) {
+            if ($element instanceof ValidationAwareInterface) {
+                $element->validate();
+            }
+        }
+        return $this;
     }
 }

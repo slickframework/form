@@ -13,6 +13,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slick\Form\Element\ContainerInterface;
 use Slick\Form\Element\FieldSet;
 use Slick\Form\Element\RenderAwareMethods;
+use Slick\Form\Input\File;
 use Slick\Form\Renderer\Form as FormRenderer;
 use Slick\Form\Renderer\RendererInterface;
 
@@ -142,5 +143,20 @@ class Form extends FieldSet implements FormInterface
     {
         $this->id = $formId;
         return $this;
+    }
+
+    /**
+     * Adds an element to the container
+     *
+     * @param ElementInterface $element
+     *
+     * @return self|$this|ContainerInterface
+     */
+    public function add(ElementInterface $element)
+    {
+        if ($element instanceof File) {
+            $this->setAttribute('enctype', 'multipart/form-data');
+        }
+        return parent::add($element);
     }
 }

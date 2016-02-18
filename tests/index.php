@@ -20,6 +20,17 @@ $engine = $template->initialize();
 
 $data = [];
 
+
+
+$form = \Slick\Form\FormRegistry::getForm(__DIR__.'/forms/full-form.yml');
+if ($request->getMethod() === 'POST') {
+    $form->setData($_POST);
+    if ($form->isValid()) {
+
+    }
+}
+$data = compact('form');
+
 $body = new \Slick\Http\Stream('php://memory', 'rw+');
 $body->write($engine->parse('form.twig')->process($data));
 

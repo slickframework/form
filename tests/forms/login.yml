@@ -16,10 +16,17 @@ elements:
   password:
     type: password
     label: Password
+    required: true
     attributes:
       autocomplete: off
     validates:
       notEmpty: To login you need a password, right!?
+  type:
+    type: select
+    label: Type of access
+    options:
+      1: front end
+      2: admin
   buttonGroup:
     type: fieldset
     elements:

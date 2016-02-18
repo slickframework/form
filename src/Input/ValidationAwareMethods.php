@@ -35,7 +35,7 @@ trait ValidationAwareMethods
     /**
      * @var boolean
      */
-    protected $valid;
+    protected $valid = true;
 
     /**
      * Gets the value to be validated
@@ -53,11 +53,20 @@ trait ValidationAwareMethods
      */
     public function isValid()
     {
-        if (is_null($this->valid)) {
-            $this->valid = $this->getValidationChain()
-                ->validates($this->getValue(), $this);
-        }
         return $this->valid;
+    }
+
+    /**
+     * Validates current value so that isValid can retrieve the result of
+     * the validation(s)
+     *
+     * @return self|$this|ValidationAwareInterface
+     */
+    public function validate()
+    {
+        $this->valid = $this->getValidationChain()
+            ->validates($this->getValue(), $this);
+        return $this;
     }
 
     /**

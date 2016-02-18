@@ -9,7 +9,9 @@
 
 namespace Slick\Form\Parser\Worker;
 
+use Slick\Filter\StaticFilter;
 use Slick\Form\Element\Button;
+use Slick\Form\Element\ChoiceAwareElementInterface;
 use Slick\Form\Element\ContainerInterface;
 use Slick\Form\Element\FieldSet;
 use Slick\Form\Element\Label;
@@ -19,6 +21,7 @@ use Slick\Form\ElementInterface;
 use Slick\Form\Exception\InvalidArgumentException;
 use Slick\Form\Input\Checkbox;
 use Slick\Form\Input\File;
+use Slick\Form\Input\Filter\Boolean;
 use Slick\Form\Input\Hidden;
 use Slick\Form\Input\Password;
 use Slick\Form\Input\Select;
@@ -113,6 +116,12 @@ class AddElements implements WorkerInterface
             self::addLabel($input, $data);
             self::addValidators($input, $data);
             self::setFilters($input, $data);
+            self::addOptions($input, $data);
+            if (isset($data['required'])) {
+                $input->setRequired(
+                    StaticFilter::filter(Boolean::class, $data['required'])
+                );
+            }
         }
 
         self::populateElement($input, $data);
@@ -250,6 +259,24 @@ class AddElements implements WorkerInterface
         if (in_array($name, self::$triggerRequired)) {
             $input->setAttribute('required');
         }
+    }
+
+    /**
+     * Set options for ChoiceAwareElementInterface input types like Select
+     *
+     * @param InputInterface $input
+     * @param $data
+     */
+    protected static function addOptions(InputInterface $input, $data)
+    {
+        if (
+            ! $input instanceof ChoiceAwareElementInterface ||
+            ! isset($data['options'])
+        ) {
+            return;
+        }
+
+        $input->setOptions($data['options']);
     }
 
 }

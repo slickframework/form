@@ -32,6 +32,14 @@ interface ValidationAwareInterface
     public function isValid();
 
     /**
+     * Validates current value so that isValid can retrieve the result of
+     * the validation(s)
+     *
+     * @return self|$this|ValidationAwareInterface
+     */
+    public function validate();
+
+    /**
      * Returns the validation chain for this input
      *
      * @return ValidationChainInterface
