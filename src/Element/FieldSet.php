@@ -209,7 +209,11 @@ class FieldSet extends AbstractCollection implements ContainerInterface
     public function validate()
     {
         foreach ($this as $element) {
-            if ($element instanceof ValidationAwareInterface) {
+
+            if (
+                $element instanceof ValidationAwareInterface ||
+                $element instanceof ContainerInterface
+            ) {
                 $element->validate();
             }
         }

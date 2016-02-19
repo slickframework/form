@@ -1,5 +1,8 @@
 id: sandbox-form
 elements:
+  profileId:
+    type: hidden
+    value: 123456
   name:
     type: text
     label: Full name
@@ -47,6 +50,3 @@ elements:
         value: Reset
         attributes:
           class: btn btn-default
-    profileId:
-      type: hidden
-      value: 123456

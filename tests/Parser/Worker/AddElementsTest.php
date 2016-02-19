@@ -104,12 +104,14 @@ class AddElementsTest extends TestCase
     public function testValidation(InputInterface $input)
     {
         $input->setValue('');
+        $input->validate();
         $this->assertFalse($input->isValid());
         $this->assertContains(
             'You have to enter a username or email address to login',
             $input->getValidationChain()->getMessages()
         );
         $input->setValue('test');
+        $input->validate();
         $this->assertTrue($input->isValid());
     }
 

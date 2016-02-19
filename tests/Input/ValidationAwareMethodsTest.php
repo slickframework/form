@@ -65,14 +65,10 @@ class ValidationAwareMethodsTest extends TestCase
     public function checkValidity()
     {
         $value = 'test';
-        $this->element->expects($this->once())
-            ->method('getValue')
-            ->willReturn($value);
+
         $chain = $this->getValidationMock();
-        $chain->expects($this->once())
-            ->method('validates')
-            ->with($value, $this->element)
-            ->willReturn(true);
+        $chain->expects($this->never())
+            ->method('validates');
         $this->element->setValidationChain($chain);
         $this->assertTrue($this->element->isValid());
     }

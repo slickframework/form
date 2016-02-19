@@ -135,7 +135,6 @@ abstract class AbstractInput extends AbstractElement
     public function setValue($value)
     {
         $this->setAttribute('value', $value);
-        $this->valid = null;
         return parent::setValue($value);
     }
 
