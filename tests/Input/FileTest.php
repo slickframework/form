@@ -27,7 +27,24 @@ class FileTest extends TestCase
      */
     public function createInput()
     {
-        $password = new File();
-        $this->assertEquals('file', $password->getAttribute('type'));
+        $file = new File();
+        $this->assertEquals('file', $file->getAttribute('type'));
     }
+
+   public function testOutput()
+   {
+       $expected = <<<EOHTML
+<div class="form-group">
+    <label for="input-picture" class="control-label">Profile picture</label>
+    <input type="file" name="picture" id="input-picture" class="form-control">
+</div>
+EOHTML;
+
+       $file = new File();
+       $file
+           ->setValue((object)[])
+           ->setName('picture')
+           ->setLabel('Profile picture');
+       $this->assertEquals($expected, $file->render());
+   }
 }

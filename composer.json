@@ -34,6 +34,7 @@
     "slick/http": "^1.2",
     "symfony/yaml": "~2.1",
     "slick/template": "^1.2",
+    "slick/i18n": "^1.2",
     "league/event": "^2.1"
   },
   "require-dev": {

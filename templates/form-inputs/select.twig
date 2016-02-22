@@ -3,7 +3,7 @@
 
     <select {{ renderer.getAttributes|raw }}>
         {% for value, option in element.getOptions -%}
-        <option{{ value == element.getValue ? ' selected' }} value="{{ value }}">{{ option }}</option>
+        <option{{ value == element.getValue ? ' selected' }} value="{{ value }}">{{ translate(option) }}</option>
         {% endfor %}
 </select>
 {%- endblock %}

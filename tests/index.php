@@ -6,6 +6,21 @@
 
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
+use Slick\I18n\Translator;
+
+// Set locale based on the browser accept language
+$locale = 'pt_PT';
+
+Translator::getInstance()
+    ->setBasePath(__DIR__.'/i18n/')
+    ->setLocale($locale)
+    ->setType(Translator::TYPE_PHP_ARRAY);
+
+// Configure the translator object
+
+// Set PHP environment locale
+setlocale(LC_ALL, $locale);
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);

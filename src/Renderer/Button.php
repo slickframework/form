@@ -9,6 +9,8 @@
 
 namespace Slick\Form\Renderer;
 
+use Slick\I18n\TranslateMethods;
+
 /**
  * HTML Button renderer
  *
@@ -18,7 +20,27 @@ class Button extends Div implements RendererInterface
 {
 
     /**
+     * Needed for button translation
+     */
+    use TranslateMethods;
+
+    /**
      * @var string The template file to use in the rendering
      */
     public $template = 'form-elements/button.twig';
+
+    /**
+     * Render the HTML element in the provided context
+     *
+     * @param array $context
+     *
+     * @return string The HTML string output
+     */
+    public function render($context = [])
+    {
+        $this->element->setValue(
+            $this->translate($this->element->getValue())
+        );
+        return parent::render($context);
+    }
 }

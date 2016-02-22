@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6d083894b27ca753037ae02919174ea4",
-    "content-hash": "e5778411d3b6cea740d54e2a66c28425",
+    "hash": "fe1eacfc777863c8f43c1b462975c767",
+    "content-hash": "4eae8e33fff686b1371e981a53f03b8c",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -641,22 +641,22 @@
         },
         {
             "name": "slick/i18n",
-            "version": "dev-feature/1.2.x",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slickframework/i18n.git",
-                "reference": "b3d4d07d2e6d8163d32632a762ac0e769b8e05a2"
+                "reference": "54c41125f938e4deab90b68adb55610428be53be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/i18n/zipball/b3d4d07d2e6d8163d32632a762ac0e769b8e05a2",
-                "reference": "b3d4d07d2e6d8163d32632a762ac0e769b8e05a2",
+                "url": "https://api.github.com/repos/slickframework/i18n/zipball/54c41125f938e4deab90b68adb55610428be53be",
+                "reference": "54c41125f938e4deab90b68adb55610428be53be",
                 "shasum": ""
             },
             "require": {
                 "slick/common": "@dev",
-                "zendframework/zend-i18n": ">=2.2.5",
-                "zendframework/zend-servicemanager": "2.2.5"
+                "zendframework/zend-i18n": "^2.6",
+                "zendframework/zend-servicemanager": "^2.6"
             },
             "require-dev": {
                 "behat/behat": "~3.0.4",
@@ -666,8 +666,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev",
-                    "dev-develop": "1.1-dev"
+                    "dev-master": "1.2-dev",
+                    "dev-develop": "1.3-dev"
                 }
             },
             "autoload": {
@@ -693,25 +693,25 @@
                 "slick",
                 "translation"
             ],
-            "time": "2016-01-07 16:51:26"
+            "time": "2016-02-22 13:10:36"
         },
         {
             "name": "slick/template",
-            "version": "dev-develop",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slickframework/template.git",
-                "reference": "7f05d9373a5f736c4feeef145ee0053300b7762f"
+                "reference": "b5e0ea2e2fd3260e2e5bced8739b4754cb5d795f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slickframework/template/zipball/7f05d9373a5f736c4feeef145ee0053300b7762f",
-                "reference": "7f05d9373a5f736c4feeef145ee0053300b7762f",
+                "url": "https://api.github.com/repos/slickframework/template/zipball/b5e0ea2e2fd3260e2e5bced8739b4754cb5d795f",
+                "reference": "b5e0ea2e2fd3260e2e5bced8739b4754cb5d795f",
                 "shasum": ""
             },
             "require": {
                 "slick/common": "@dev",
-                "slick/i18n": "dev-feature/1.2.x",
+                "slick/i18n": "^1.2",
                 "twig/twig": "~v1.15",
                 "zendframework/zend-http": "^2.5"
             },
@@ -750,7 +750,7 @@
                 "template",
                 "twig"
             ],
-            "time": "2016-02-22 00:41:13"
+            "time": "2016-02-22 13:23:53"
         },
         {
             "name": "slick/validator",
@@ -1012,16 +1012,16 @@
         },
         {
             "name": "zendframework/zend-i18n",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-i18n.git",
-                "reference": "9062fee896f8e60bb35a7342600d7e7096a1ce65"
+                "reference": "478ad3049bf5df01cecb8dc75b551354b9844b36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/9062fee896f8e60bb35a7342600d7e7096a1ce65",
-                "reference": "9062fee896f8e60bb35a7342600d7e7096a1ce65",
+                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/478ad3049bf5df01cecb8dc75b551354b9844b36",
+                "reference": "478ad3049bf5df01cecb8dc75b551354b9844b36",
                 "shasum": ""
             },
             "require": {
@@ -1071,7 +1071,7 @@
                 "i18n",
                 "zf2"
             ],
-            "time": "2016-02-10 22:29:58"
+            "time": "2016-02-10 22:30:20"
         },
         {
             "name": "zendframework/zend-loader",
@@ -1119,34 +1119,38 @@
         },
         {
             "name": "zendframework/zend-servicemanager",
-            "version": "2.2.5",
+            "version": "2.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-servicemanager.git",
-                "reference": "d3cf7633b54e8111aa1b1c7c774462f0b21105ef"
+                "reference": "fb5b54db5ead533b38e311f14e9c01a79218bf2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/d3cf7633b54e8111aa1b1c7c774462f0b21105ef",
-                "reference": "d3cf7633b54e8111aa1b1c7c774462f0b21105ef",
+                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/fb5b54db5ead533b38e311f14e9c01a79218bf2b",
+                "reference": "fb5b54db5ead533b38e311f14e9c01a79218bf2b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "container-interop/container-interop": "~1.0",
+                "php": "^5.5 || ^7.0"
             },
             "require-dev": {
+                "athletic/athletic": "dev-master",
                 "fabpot/php-cs-fixer": "1.7.*",
                 "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "dev-master"
+                "zendframework/zend-di": "~2.5",
+                "zendframework/zend-mvc": "~2.5"
             },
             "suggest": {
+                "ocramius/proxy-manager": "ProxyManager 0.5.* to handle lazy initialization of services",
                 "zendframework/zend-di": "Zend\\Di component"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
+                    "dev-master": "2.7-dev",
+                    "dev-develop": "3.0-dev"
                 }
             },
             "autoload": {
@@ -1158,12 +1162,12 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "homepage": "https://github.com/zendframework/zend-service-manager",
+            "homepage": "https://github.com/zendframework/zend-servicemanager",
             "keywords": [
                 "servicemanager",
                 "zf2"
             ],
-            "time": "2013-10-31 15:35:17"
+            "time": "2016-02-02 14:11:46"
         },
         {
             "name": "zendframework/zend-stdlib",

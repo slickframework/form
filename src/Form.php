@@ -173,6 +173,7 @@ class Form extends FieldSet implements FormInterface
         $formId = $formId
             ? $formId
             : $this->getRequest()->getQuery('form-id', null);
+
         $submitted = $this->request->getMethod() == $formMethod &&
             $formId == $this->getId();
         if ($submitted) {
@@ -186,7 +187,7 @@ class Form extends FieldSet implements FormInterface
      *
      * @return ServerRequestInterface|Request
      */
-    protected function getRequest()
+    public function getRequest()
     {
         if (null == $this->request) {
             $this->request = new Request();
