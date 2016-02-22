@@ -2,4 +2,10 @@
 
 {% block content %}
     {{ form|raw }}
+
+    {% if submitted %}
+        <h4>Submitted values</h4>
+        <hr>
+        {{ dump(form.getData) }}
+    {% endif %}
 {% endblock %}

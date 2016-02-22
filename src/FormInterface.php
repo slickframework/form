@@ -62,4 +62,11 @@ interface FormInterface extends ContainerInterface
      * @return self|$this|FormInterface
      */
     public function setRequest(ServerRequestInterface $request);
+
+    /**
+     * Check if for was submitted or not
+     *
+     * @return boolean
+     */
+    public function wasSubmitted();
 }

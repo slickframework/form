@@ -1,16 +1,19 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: fsilva
- * Date: 10-02-2016
- * Time: 12:43
+ * This file is part of slick/form package
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Slick\Form\Renderer;
 
-
-use Slick\Form\InputInterface;
-
+/**
+ * Input renderer
+ *
+ * @package Slick\Form\Renderer
+ */
 class Input extends Div implements RendererInterface
 {
 

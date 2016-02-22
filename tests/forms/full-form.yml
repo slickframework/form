@@ -3,6 +3,8 @@ elements:
   profileId:
     type: hidden
     value: 123456
+    filters:
+      - Slick\Form\Input\Filter\Integer
   name:
     type: text
     label: Full name
@@ -17,7 +19,9 @@ elements:
     label: Profile picture
   public:
     type: checkbox
-    label: Make my profile public
+    label: Make my profile public,
+    filters:
+      - Slick\Form\Input\Filter\Boolean
   addressSet:
     type: fieldset
     value: Address

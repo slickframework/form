@@ -16,6 +16,7 @@ use Slick\Form\Element\RenderAwareMethods;
 use Slick\Form\Input\File;
 use Slick\Form\Renderer\Form as FormRenderer;
 use Slick\Form\Renderer\RendererInterface;
+use Slick\Http\PhpEnvironment\Request;
 
 /**
  * HTTP Form
@@ -158,5 +159,53 @@ class Form extends FieldSet implements FormInterface
             $this->setAttribute('enctype', 'multipart/form-data');
         }
         return parent::add($element);
+    }
+
+    /**
+     * Check if for was submitted or not
+     *
+     * @return boolean
+     */
+    public function wasSubmitted()
+    {
+        $formMethod = strtoupper($this->getAttribute('method', 'post'));
+        $formId = $this->getRequest()->getPost('form-id', false);
+        $formId = $formId
+            ? $formId
+            : $this->getRequest()->getQuery('form-id', null);
+        $submitted = $this->request->getMethod() == $formMethod &&
+            $formId == $this->getId();
+        if ($submitted) {
+            $this->updateValuesFromRequest();
+        }
+        return $submitted;
+    }
+
+    /**
+     * Gets the HTTP request
+     *
+     * @return ServerRequestInterface|Request
+     */
+    protected function getRequest()
+    {
+        if (null == $this->request) {
+            $this->request = new Request();
+        }
+        return $this->request;
+    }
+
+    /**
+     * Assign form values from request
+     */
+    protected function updateValuesFromRequest()
+    {
+        $data = $this->getRequest()->isPost()
+            ? $this->getRequest()->getPost()
+            : $this->getRequest()->getQuery();
+        if (isset($_FILES)) {
+            $data = array_merge($data, $this->request->getUploadedFiles());
+        }
+        $this->setValues($data);
+
     }
 }

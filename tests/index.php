@@ -14,7 +14,14 @@ $request = new \Slick\Http\PhpEnvironment\Request();
 $response = new \Slick\Http\PhpEnvironment\Response();
 
 \Slick\Template\Template::addPath(__DIR__.'/templates');
-$template = new \Slick\Template\Template();
+$template = new \Slick\Template\Template(
+    [
+        'engine' => \Slick\Template\Template::ENGINE_TWIG,
+        'options' => [
+            'debug' => true
+        ]
+    ]
+);
 /** @var \Slick\Template\TemplateEngineInterface $engine */
 $engine = $template->initialize();
 
@@ -23,13 +30,16 @@ $data = [];
 
 
 $form = \Slick\Form\FormRegistry::getForm(__DIR__.'/forms/full-form.yml');
-if ($request->getMethod() === 'POST') {
-    $form->setData($_POST);
+
+$form->setRequest($request);
+$submitted = false;
+if ($form->wasSubmitted()) {
+    $submitted = true;
     if ($form->isValid()) {
 
     }
 }
-$data = compact('form');
+$data = compact('form','submitted');
 
 $body = new \Slick\Http\Stream('php://memory', 'rw+');
 $body->write($engine->parse('form.twig')->process($data));

@@ -10,6 +10,7 @@
 namespace Slick\Form\Input;
 
 use Slick\Form\InputInterface;
+use Slick\Form\Renderer\File as FileRenderer;
 
 /**
  * HTML File input
@@ -19,6 +20,11 @@ use Slick\Form\InputInterface;
  */
 class File extends AbstractInput implements InputInterface
 {
+
+    /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = FileRenderer::class;
 
     /**
      * Crates the input with the attribute type as text
