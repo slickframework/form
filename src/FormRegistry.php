@@ -11,9 +11,11 @@ namespace Slick\Form;
 
 use League\Event\Emitter;
 use League\Event\EmitterInterface;
+use Slick\Filter\StaticFilter;
 use Slick\Form\Parser\ParserInterface;
 use Slick\Form\Parser\PhpParser;
 use Slick\Form\Parser\YamlParser;
+use Slick\Validator\StaticValidator;
 
 /**
  * Form Registry and factory class
@@ -41,7 +43,15 @@ final class FormRegistry extends Emitter implements EmitterInterface
      */
     private function __construct()
     {
-        // Prevent creation, allowing for singleton pattern
+        StaticValidator::$validators['requiredUpload'] =
+            'Slick\Form\Input\Validator\RequiredUpload';
+        StaticValidator::$validators['validUpload'] =
+            'Slick\Form\Input\Validator\ValidUpload';
+        StaticFilter::$filters['integer'] =
+            'Slick\Form\Input\Filter\Integer';
+        StaticFilter::$filters['boolean'] =
+            'Slick\Form\Input\Filter\Boolean';
+
     }
 
     /**

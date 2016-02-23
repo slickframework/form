@@ -4,7 +4,7 @@ elements:
     type: hidden
     value: 123456
     filters:
-      - Slick\Form\Input\Filter\Integer
+      - integer
   name:
     type: text
     label: Full name
@@ -17,11 +17,14 @@ elements:
   picture:
     type: file
     label: Profile picture
+    validates:
+      requiredUpload: Profile picture is needed.
+      validUpload: Error uploading file. %s
   public:
     type: checkbox
     label: Make my profile public,
     filters:
-      - Slick\Form\Input\Filter\Boolean
+      - boolean
   addressSet:
     type: fieldset
     value: Address

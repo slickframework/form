@@ -38,6 +38,11 @@ trait ValidationAwareMethods
     protected $valid = true;
 
     /**
+     * @var array
+     */
+    protected $context = [];
+
+    /**
      * Gets the value to be validated
      *
      * @return mixed
@@ -64,8 +69,9 @@ trait ValidationAwareMethods
      */
     public function validate()
     {
+        $context = array_merge(['input' => $this], $this->context);
         $this->valid = $this->getValidationChain()
-            ->validates($this->getValue(), $this);
+            ->validates($this->getValue(), $context);
         return $this;
     }
 
@@ -103,7 +109,8 @@ trait ValidationAwareMethods
      * ValidatorInterface.
      *
      * @param string|ValidatorInterface $validator
-     * @param string $message Error message
+     * @param string|array $message Error message and possible contexts
+     *      variables.
      *
      * @return self|$this|ValidationAwareInterface|ElementInterface
      *
@@ -114,7 +121,12 @@ trait ValidationAwareMethods
     public function addValidator($validator, $message = null)
     {
         try {
-            $validator = StaticValidator::create($validator, $message);
+            $msg = $message;
+            if (is_array($message)) {
+                $msg = array_shift($message);
+                $this->context = $message;
+            }
+            $validator = StaticValidator::create($validator, $msg);
             $this->getValidationChain()
                 ->add($validator);
             if ($validator instanceof NotEmpty) {

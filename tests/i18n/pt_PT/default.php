@@ -20,5 +20,7 @@ return array(
     'Make my profile public,' => 'Manter o meu perfil público',
     'Profile picture' => 'Fotografia',
     'Submit form' => 'Submeter',
-    'Reset' => 'Limpar formulário'
+    'Reset' => 'Limpar formulário',
+    'You need to especify the profile picture. No file was uploaded.' =>
+        'Tem de indicar uma fotografia para o seu perfil. Nenhum ficheiro foi carregado.'
 );
