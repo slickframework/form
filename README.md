@@ -56,6 +56,8 @@ elements:
   remember:
       type: checkbox
       label: Remember me on this computer
+      filters:
+        - boolean
   buttonGroup:
     type: fieldset
     elements:
@@ -80,18 +82,62 @@ class LoginController
 }
 ```
 
+### Form HTML rendering
+
 And in your view:
 
 ```html
-<div class="form-wrapper">
-  <?php print $form; ?>
-</div>
+<html>
+<head>
+    <title>Login form</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="form-wrapper">
+      <?php print $form; ?>
+    </div>
+</body>
 ```
 
 the result should be as follows:
 
 
 ![Form output](https://raw.githubusercontent.com/slickframework/form/master/img/login-1.png)
+
+
+### Form submission/validation
+
+Now with our form in place we need to detect if the form was submitted and
+if its valid:
+
+```php
+use Slick\Form\FormRegistry;
+
+class LoginController
+{
+    public function login()
+    {
+        $form = FormRegistry::getForm('login-form.yml');
+        if ($form->wasSubmitted()) {
+            if ($form->isValid()) {
+                $data = $form->getValues();  // An associative array with submitted values
+                // Do stuff with the values
+            } else {
+                // data is not valid
+            }
+        }
+        return compact('form');
+    }
+}
+```
+
+The `Form::wasSubmitted()` and `Form::isValid()` methods encapsulate the retrieve
+of submitted data and the validation process through all input validation chains.
+
+The `Form::getValues()` will return an associative array with submitted values
+filtered. For example the `$data['remember']` is a `Boolean` value because it will
+use the `boolean` filter as we set in the `login-form.yml` definitions file. 
 
 ## Testing
 
