@@ -41,12 +41,29 @@ Lets start with a very simple example: A login form (`login-form.yml`)
 ```yaml
 id: login-form
 elements:
-    username:
-        type: text
-        label: Username
-    password:
-        type: password
-        label: Password
+  username:
+    type: text
+    label: Username
+    validates:
+      notEmpty: Username cannot be empty
+    filters:
+      - text
+  password:
+    type: password
+    label: Password
+    validates:
+      notEmpty: Password cannot be empty
+  remember:
+      type: checkbox
+      label: Remember me on this computer
+  buttonGroup:
+    type: fieldset
+    elements:
+      submit:
+        type: submit
+        value: Sign in
+        attributes:
+          class: btn btn-primary
 ```
 In your application controller
 
@@ -72,6 +89,8 @@ And in your view:
 ```
 
 the result should be as follows:
+
+
 ![Form output](https://raw.githubusercontent.com/slickframework/form/master/img/login-1.png)
 
 ## Testing
