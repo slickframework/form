@@ -1,0 +1,8 @@
+id: login-form
+elements:
+    username:
+        type: text
+        label: Username
+    password:
+        type: password
+        label: Password

@@ -9,7 +9,7 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 use Slick\I18n\Translator;
 
 // Set locale based on the browser accept language
-$locale = 'pt_PT';
+$locale = 'en_US';
 
 Translator::getInstance()
     ->setBasePath(__DIR__.'/i18n/')
@@ -44,7 +44,7 @@ $data = [];
 
 
 
-$form = \Slick\Form\FormRegistry::getForm(__DIR__.'/forms/full-form.yml');
+$form = \Slick\Form\FormRegistry::getForm(__DIR__.'/forms/test.yml');
 
 $form->setRequest($request);
 $submitted = false;

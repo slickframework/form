@@ -25,6 +25,55 @@ $ composer require slick/form
 
 ## Usage
 
+One of the greatest features of `Slick/Form` package is to facilitate the creation
+and usage of HTML forms. You probably will need forms in your application and
+you will need to create all the HTML for every input, validate that input in
+submission process and filter the input before using it.
+
+`Slick/Form` helps you with that. All you need is to define your form and its
+validators and filters and you will have HTML rendering, input validation and
+filter.
+
+### Form definition
+
+Lets start with a very simple example: A login form (`login-form.yml`)
+
+```yaml
+id: login-form
+elements:
+    username:
+        type: text
+        label: Username
+    password:
+        type: password
+        label: Password
+```
+In your application controller
+
+```php
+use Slick\Form\FormRegistry;
+
+class LoginController
+{
+    public function login()
+    {
+        $form = FormRegistry::getForm('login-form.yml');
+        return compact('form');
+    }
+}
+```
+
+And in your view:
+
+```html
+<div class="form-wrapper">
+  <?php print $form; ?>
+</div>
+```
+
+the result should be as follows:
+![Form output](https://raw.githubusercontent.com/slickframework/form/master/img/login-1.png)
+
 ## Testing
 
 ``` bash
