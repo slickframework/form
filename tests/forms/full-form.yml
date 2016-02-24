@@ -43,7 +43,7 @@ elements:
           M: Male
           F: Female
         validates:
-          Slick\Tests\Form\Validator\Gender: Please choose the propert option for your gender.
+          Slick\Tests\Form\Validator\Gender: Please choose the proper option for your gender.
   buttonGroup:
     type: fieldset
     elements:
