@@ -9,7 +9,7 @@ return array(
         'plural_forms' => 'nplurals=2; plural=n!=1;'
     ),
     'Full name' => 'Nome completo',
-    'Please choose the propert option for your gender.' =>
+    'Please choose the proper option for your gender.' =>
         'Por favor selecione a opção apropriada.',
     '-- Select one --' => '-- Selecione uma opção --',
     'Gender' => 'Sexo',
@@ -21,6 +21,6 @@ return array(
     'Profile picture' => 'Fotografia',
     'Submit form' => 'Submeter',
     'Reset' => 'Limpar formulário',
-    'You need to especify the profile picture. No file was uploaded.' =>
+    'You need to specify the profile picture. No file was uploaded.' =>
         'Tem de indicar uma fotografia para o seu perfil. Nenhum ficheiro foi carregado.'
 );
