@@ -62,6 +62,8 @@ class AddElements implements WorkerInterface
     public static $triggerRequired = [
         'notEmpty', 'email', 'url'
     ];
+    
+    private static $form;
 
     /**
      * Adds or changes a specific aspect of provided from
@@ -73,6 +75,7 @@ class AddElements implements WorkerInterface
      */
     public static function execute(ContainerInterface $form, array $data)
     {
+        self::$form = $form;
         $hasElements = isset($data['elements']) && is_array($data['elements']);
         if (!$hasElements) {
             return;
@@ -223,6 +226,10 @@ class AddElements implements WorkerInterface
 
         foreach ($data['validates'] as $validator => $message) {
             self::checkIfRequired($validator, $input);
+            if (!is_array($message)) {
+                $message = ['message' => $message];
+            }
+            $message['form'] = self::$form;
             $input->addValidator($validator, $message);
         }
     }
