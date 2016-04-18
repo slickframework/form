@@ -12,6 +12,7 @@ namespace Slick\Form\Element;
 use Slick\Form\ElementInterface;
 use Slick\Form\Renderer\Div;
 use Slick\Form\Renderer\RendererInterface;
+use Slick\Form\ValueAwareInterface;
 
 /**
  * Abstract Element: base element interface implementations
@@ -75,6 +76,9 @@ abstract class AbstractElement implements ElementInterface
     public function setValue($value)
     {
         $this->value = $value;
+        if ($value instanceof ValueAwareInterface) {
+            $this->value = $value->getFormValue();
+        }
         return $this;
     }
 
