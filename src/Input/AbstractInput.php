@@ -25,6 +25,9 @@ use Slick\I18n\TranslateMethods;
  */
 abstract class AbstractInput extends AbstractElement
 {
+    
+    protected static $instances = 0;
+    
     /**
      * @var string used in input id generation
      */
@@ -67,7 +70,7 @@ abstract class AbstractInput extends AbstractElement
      */
     public function getName()
     {
-        return $this->getAttribute('name');
+        return trim($this->getAttribute('name'), '][');
     }
 
     /**
@@ -79,7 +82,10 @@ abstract class AbstractInput extends AbstractElement
      */
     public function setName($name)
     {
-        $this->setAttribute('name', $name);
+        $attrName = $this->isMultiple()
+            ? "{$name}[]"
+            : $name;
+        $this->setAttribute('name', $attrName);
         $this->name = $name;
         if ($label = $this->getLabel()) {
             $this->getLabel()->setAttribute('for', $this->generateId());
@@ -132,9 +138,15 @@ abstract class AbstractInput extends AbstractElement
         return $this->value;
     }
 
+    /**
+     * Overrides the default behavior to add the value attribute
+     * 
+     * @param mixed $value
+     * 
+     * @return mixed
+     */
     public function setValue($value)
     {
-        $this->setAttribute('value', $value);
         return parent::setValue($value);
     }
 
@@ -146,6 +158,9 @@ abstract class AbstractInput extends AbstractElement
     protected function generateId()
     {
         $inputId = static::$idPrefix . $this->getName();
+        if ($this->isMultiple()) {
+            $inputId = "{$inputId}-{$this->getInstance()}";
+        }
         $this->setAttribute('id', $inputId);
         return $inputId;
     }
@@ -237,6 +252,77 @@ abstract class AbstractInput extends AbstractElement
         if ($this->getAttributes()->containsKey('required')) {
                 $this->getAttributes()->remove('required');
         }
+        return $this;
+    }
+
+    /**
+     * Check if this input is for multiple usage
+     * 
+     * @return boolean
+     */
+    public function isMultiple()
+    {
+        return $this->settings['multiple'];
+    }
+    
+    /**
+     * If input is multiple get the instance it belongs
+     *
+     * @return int
+     */
+    public function getInstance()
+    {
+        return static::$instances;
+    }
+
+    /**
+     * If input is multiple get the instance value of it
+     *
+     * @return mixed
+     */
+    public function getInstanceValue()
+    {
+        $value = $this->getValue();
+        if (
+            is_array($value) &&
+            array_key_exists(static::$instances, $this->value)
+        ) {
+            $value = $value[static::$instances];
+        }
+        return $value;
+    }
+
+    /**
+     * Returns the HTML string for current element
+     *
+     * @param array $context
+     *
+     * @return string
+     */
+    public function render($context = [])
+    {
+        $this->setAttribute('value', $this->getInstanceValue());
+        $data = parent::render($context);
+        if ($this->isMultiple()) {
+            $this->updateInstance();
+        }
+        return $data;
+    }
+
+    /**
+     * Updates input id and link it to its label
+     * 
+     * @return self|AbstractInput
+     */
+    protected function updateInstance()
+    {
+        static::$instances++;
+        $id = $this->generateId();
+        $this->setAttribute($id, $id);
+        if ($label = $this->getLabel()) {
+            $label->setAttribute('for', $id);
+        }
+        
         return $this;
     }
 }
