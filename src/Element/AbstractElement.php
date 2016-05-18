@@ -24,6 +24,13 @@ abstract class AbstractElement implements ElementInterface
 {
 
     /**
+     * @var array
+     */
+    protected $settings = [
+        'multiple' => false
+    ];
+
+    /**
      * Add attribute manipulation methods
      */
     use AttributesAwareMethods;
@@ -128,6 +135,18 @@ abstract class AbstractElement implements ElementInterface
     protected function setRenderer(RendererInterface $renderer)
     {
         $this->renderer = $renderer;
+        return $this;
+    }
+
+    /**
+     * Set other input settings
+     *
+     * @param array $settings
+     * @return self|AbstractElement
+     */
+    public function setSettings(array $settings)
+    {
+        $this->settings = array_merge($this->settings, $settings);
         return $this;
     }
 }

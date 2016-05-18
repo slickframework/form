@@ -83,6 +83,7 @@ class AddElements implements WorkerInterface
 
         foreach ($data['elements'] as $name => $element) {
             $input = self::create($element);
+            self::setSettings($input, $data);
             $input->setName($name);
             self::populateInputs($input, $element);
             $form->add($input);
@@ -284,6 +285,13 @@ class AddElements implements WorkerInterface
         }
 
         $input->setOptions($data['options']);
+    }
+    
+    protected static function setSettings(ElementInterface $input, $data)
+    {
+        if (isset($data['settings'])) {
+            $input->setSettings($data['settings']);
+        }
     }
 
 }
