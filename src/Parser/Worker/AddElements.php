@@ -83,7 +83,7 @@ class AddElements implements WorkerInterface
 
         foreach ($data['elements'] as $name => $element) {
             $input = self::create($element);
-            self::setSettings($input, $data);
+            self::setSettings($input, $element);
             $input->setName($name);
             self::populateInputs($input, $element);
             $form->add($input);

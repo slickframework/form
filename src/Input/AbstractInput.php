@@ -25,9 +25,9 @@ use Slick\I18n\TranslateMethods;
  */
 abstract class AbstractInput extends AbstractElement
 {
-    
-    protected static $instances = 0;
-    
+
+    protected $instances = 0;
+
     /**
      * @var string used in input id generation
      */
@@ -159,7 +159,7 @@ abstract class AbstractInput extends AbstractElement
     {
         $inputId = static::$idPrefix . $this->getName();
         if ($this->isMultiple()) {
-            $inputId = "{$inputId}-{$this->getInstance()}";
+            $inputId = "{$inputId}-{$this->instances}";
         }
         $this->setAttribute('id', $inputId);
         return $inputId;
@@ -272,7 +272,7 @@ abstract class AbstractInput extends AbstractElement
      */
     public function getInstance()
     {
-        return static::$instances;
+        return $this->instances;
     }
 
     /**
@@ -285,9 +285,9 @@ abstract class AbstractInput extends AbstractElement
         $value = $this->getValue();
         if (
             is_array($value) &&
-            array_key_exists(static::$instances, $this->value)
+            array_key_exists($this->instances, $this->value)
         ) {
-            $value = $value[static::$instances];
+            $value = $value[$this->instances];
         }
         return $value;
     }
@@ -316,7 +316,7 @@ abstract class AbstractInput extends AbstractElement
      */
     protected function updateInstance()
     {
-        static::$instances++;
+        $this->instances++;
         $id = $this->generateId();
         $this->setAttribute($id, $id);
         if ($label = $this->getLabel()) {
