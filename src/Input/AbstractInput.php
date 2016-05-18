@@ -272,7 +272,7 @@ abstract class AbstractInput extends AbstractElement
      */
     public function getInstance()
     {
-        return $this->instances;
+        return $instances;
     }
 
     /**
