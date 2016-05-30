@@ -40,6 +40,11 @@ trait ValidationAwareMethods
     /**
      * @var array
      */
+    protected $invalidInstances = [];
+
+    /**
+     * @var array
+     */
     protected $context = [];
 
     /**
@@ -58,7 +63,25 @@ trait ValidationAwareMethods
      */
     public function isValid()
     {
-        return $this->valid;
+        $valid = $this->valid;
+        if ($this->isMultiple()) {
+            $valid = $this->isMultipleValid();
+        }
+        return $valid;
+    }
+
+    /**
+     * Validates when input is set to be multiple
+     * 
+     * @return bool
+     */
+    protected function isMultipleValid()
+    {
+        if (!$this->isRendering()) {
+            return empty($this->invalidInstances);
+        }
+        
+        return ! in_array($this->getInstance(), $this->invalidInstances);
     }
 
     /**
@@ -70,11 +93,46 @@ trait ValidationAwareMethods
     public function validate()
     {
         $context = array_merge(['input' => $this], $this->context);
-        $this->valid = $this->getValidationChain()
-            ->validates($this->getValue(), $context);
+        $values = $this->getValue();
+        if (!is_array($values)) {
+            $this->valid = $this->getValidationChain()
+                ->validates($this->getValue(), $context);
+            return $this;
+        }
+        $this->validateArray($values, $context);
         return $this;
     }
 
+    /**
+     * Validates input when is set to be multiple
+     * 
+     * @param array $values
+     * @param array $context
+     */
+    protected function validateArray(array $values, $context)
+    {
+        foreach ($values as $key => $value) {
+            $valid = $this->getValidationChain()
+                ->validates($value, $context);
+            if (!$valid) {
+                $this->setInvalid($key);
+            }
+        }
+    }
+
+    /**
+     * Mark instance as invalid
+     * 
+     * @param int $key
+     * 
+     * @return $this|self
+     */
+    protected function setInvalid($key)
+    {
+        array_push($this->invalidInstances, $key);
+        return $this;
+    }
+    
     /**
      * Returns the validation chain for this input
      *
@@ -150,4 +208,26 @@ trait ValidationAwareMethods
      * @return $this|self|InputInterface
      */
     abstract public function setRequired($required);
+
+    /**
+     * If input is multiple get the instance it belongs
+     *
+     * @return int
+     */
+    abstract public function getInstance();
+
+    /**
+     * Check if this input is for multiple usage
+     *
+     * @return boolean
+     */
+    abstract public function isMultiple();
+
+    /**
+     * Check if input is being rendered
+     * 
+     * @return boolean
+     */
+    abstract public function isRendering();
+    
 }

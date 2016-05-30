@@ -114,6 +114,15 @@ interface ElementInterface
     public function render();
 
     /**
+     * Set rendering state
+     * 
+     * @param bool $state
+     * 
+     * @return self|$this|InputInterface
+     */
+    public function setRendering($state);
+
+    /**
      * Set other input settings
      *
      * @param array $settings
