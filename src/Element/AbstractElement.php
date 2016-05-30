@@ -61,6 +61,11 @@ abstract class AbstractElement implements ElementInterface
     protected $renderer;
 
     /**
+     * @var bool
+     */
+    protected $rendering = false;
+
+    /**
      * Gets the element value
      *
      * This value here is just a string and it can be the content that
@@ -148,5 +153,28 @@ abstract class AbstractElement implements ElementInterface
     {
         $this->settings = array_merge($this->settings, $settings);
         return $this;
+    }
+
+    /**
+     * Set rendering state
+     *
+     * @param bool $state
+     *
+     * @return self|$this|AbstractElement
+     */
+    public function setRendering($state)
+    {
+        $this->rendering = $state;
+        return $this;
+    }
+
+    /**
+     * Check if input is being rendered
+     *
+     * @return boolean
+     */
+    public function isRendering()
+    {
+        return $this->rendering;
     }
 }

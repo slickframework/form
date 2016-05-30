@@ -26,6 +26,9 @@ use Slick\I18n\TranslateMethods;
 abstract class AbstractInput extends AbstractElement
 {
 
+    /**
+     * @var int int
+     */
     protected $instances = 0;
 
     /**
@@ -272,7 +275,7 @@ abstract class AbstractInput extends AbstractElement
      */
     public function getInstance()
     {
-        return $instances;
+        return $this->instances;
     }
 
     /**

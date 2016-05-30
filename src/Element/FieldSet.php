@@ -50,6 +50,11 @@ class FieldSet extends AbstractCollection implements ContainerInterface
     protected $value;
 
     /**
+     * @var bool
+     */
+    protected $rendering = false;
+
+    /**
      * Checks if all elements are valid
      *
      * @return mixed
@@ -234,6 +239,19 @@ class FieldSet extends AbstractCollection implements ContainerInterface
     public function setSettings(array $settings)
     {
         $this->settings = array_merge($this->settings, $settings);
+        return $this;
+    }
+
+    /**
+     * Set rendering state
+     *
+     * @param bool $state
+     *
+     * @return FieldSet
+     */
+    public function setRendering($state)
+    {
+        $this->rendering = $state;
         return $this;
     }
 }
