@@ -48,4 +48,23 @@ class Checkbox extends Div
         }
         return implode(' ', $result);
     }
+
+    /**
+     * Returns the elements's attributes as a string
+     *
+     * @return string
+     */
+    public function getAttributes()
+    {
+        $result = [];
+        foreach ($this->element->getAttributes() as $attribute => $value) {
+            if (null === $value) {
+                $result[] = $attribute;
+                continue;
+            }
+            if ($attribute == 'name') continue;
+            $result[] = "{$attribute}=\"{$value}\"";
+        }
+        return implode(' ', $result);
+    }
 }
