@@ -29,6 +29,11 @@ class Checkbox  extends AbstractInput implements InputInterface
     protected $checked = null;
 
     /**
+     * @var string|mixed
+     */
+    protected $value = 0;
+
+    /**
      * @var string Renderer class
      */
     protected $rendererClass = CheckboxRenderer::class;
