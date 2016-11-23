@@ -12,6 +12,7 @@ namespace Slick\Form\Element;
 use Slick\Form\ElementInterface;
 use Slick\Form\Renderer\Div;
 use Slick\Form\Renderer\RendererInterface;
+use Slick\Form\ValueAwareInterface;
 
 /**
  * Abstract Element: base element interface implementations
@@ -21,6 +22,13 @@ use Slick\Form\Renderer\RendererInterface;
  */
 abstract class AbstractElement implements ElementInterface
 {
+
+    /**
+     * @var array
+     */
+    protected $settings = [
+        'multiple' => false
+    ];
 
     /**
      * Add attribute manipulation methods
@@ -53,6 +61,11 @@ abstract class AbstractElement implements ElementInterface
     protected $renderer;
 
     /**
+     * @var bool
+     */
+    protected $rendering = false;
+
+    /**
      * Gets the element value
      *
      * This value here is just a string and it can be the content that
@@ -75,6 +88,9 @@ abstract class AbstractElement implements ElementInterface
     public function setValue($value)
     {
         $this->value = $value;
+        if ($value instanceof ValueAwareInterface) {
+            $this->value = $value->getFormValue();
+        }
         return $this;
     }
 
@@ -125,5 +141,40 @@ abstract class AbstractElement implements ElementInterface
     {
         $this->renderer = $renderer;
         return $this;
+    }
+
+    /**
+     * Set other input settings
+     *
+     * @param array $settings
+     * @return self|AbstractElement
+     */
+    public function setSettings(array $settings)
+    {
+        $this->settings = array_merge($this->settings, $settings);
+        return $this;
+    }
+
+    /**
+     * Set rendering state
+     *
+     * @param bool $state
+     *
+     * @return self|$this|AbstractElement
+     */
+    public function setRendering($state)
+    {
+        $this->rendering = $state;
+        return $this;
+    }
+
+    /**
+     * Check if input is being rendered
+     *
+     * @return boolean
+     */
+    public function isRendering()
+    {
+        return $this->rendering;
     }
 }

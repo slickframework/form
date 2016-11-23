@@ -9,13 +9,9 @@
 
 namespace Slick\Form;
 
-use Slick\Filter\FilterChainInterface;
-use Slick\Filter\FilterInterface;
 use Slick\Form\Exception\InvalidArgumentException;
 use Slick\Form\Input\FilterAwareInterface;
 use Slick\Form\Input\ValidationAwareInterface;
-use Slick\Validator\ValidationChainInterface;
-use Slick\Validator\ValidatorInterface;
 
 /**
  * HTML From Input Interface
@@ -83,5 +79,26 @@ interface InputInterface extends
      * @return $this|self|InputInterface
      */
     public function setRequired($required);
+    
+    /**
+     * Check if this input is for multiple usage
+     *
+     * @return boolean
+     */
+    public function isMultiple();
+
+    /**
+     * If input is multiple get the instance it belongs
+     *
+     * @return int
+     */
+    public function getInstance();
+
+    /**
+     * If input is multiple get the instance value of it
+     *
+     * @return mixed
+     */
+    public function getInstanceValue();
 
 }

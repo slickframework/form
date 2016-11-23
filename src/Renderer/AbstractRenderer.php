@@ -111,4 +111,16 @@ abstract class AbstractRenderer
         return implode(' ', $result);
     }
 
+    /**
+     * Render the HTML element in the provided context
+     *
+     * @param array $context
+     *
+     * @return string The HTML string output
+     */
+    public function render($context = [])
+    {
+        $this->getElement()->setRendering(true);
+        return '';
+    }
 }

@@ -25,6 +25,11 @@ class FieldSet extends AbstractCollection implements ContainerInterface
 {
 
     /**
+     * @var array
+     */
+    protected $settings = [];
+    
+    /**
      * Add attribute manipulation methods
      */
     use AttributesAwareMethods;
@@ -43,6 +48,11 @@ class FieldSet extends AbstractCollection implements ContainerInterface
      * @var string
      */
     protected $value;
+
+    /**
+     * @var bool
+     */
+    protected $rendering = false;
 
     /**
      * Checks if all elements are valid
@@ -217,6 +227,31 @@ class FieldSet extends AbstractCollection implements ContainerInterface
                 $element->validate();
             }
         }
+        return $this;
+    }
+
+    /**
+     * Set other input settings
+     *
+     * @param array $settings
+     * @return self|AbstractElement
+     */
+    public function setSettings(array $settings)
+    {
+        $this->settings = array_merge($this->settings, $settings);
+        return $this;
+    }
+
+    /**
+     * Set rendering state
+     *
+     * @param bool $state
+     *
+     * @return FieldSet
+     */
+    public function setRendering($state)
+    {
+        $this->rendering = $state;
         return $this;
     }
 }

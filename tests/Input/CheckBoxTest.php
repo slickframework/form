@@ -44,7 +44,7 @@ class CheckboxTest extends TestCase
         $expected = <<<EOHTML
 <div class="checkbox">
     <label for="input-public" class="control-label normal-label" ng-test-controller>
-        <input type="checkbox" name="public" value="1" checked id="input-public" class="user-ctrl"> Check this!
+        <input type="checkbox" name="public" checked id="input-public" class="user-ctrl" value="1"> Check this!
     </label>
 </div>
 EOHTML;
