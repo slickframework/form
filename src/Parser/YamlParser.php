@@ -147,7 +147,7 @@ class YamlParser implements ParserInterface
         }
 
         try {
-            $this->parsedData = Yaml::parse($definitions);
+            $this->parsedData = Yaml::parse(file_get_contents($definitions));
         } catch (\Exception $caught) {
             throw new ParserErrorException(
                 'Error parsing form definitions: '.$caught->getMessage(),
