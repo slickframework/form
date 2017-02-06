@@ -9,7 +9,7 @@
   ],
   "minimum-stability": "dev",
   "license": "MIT",
-  "version": "v1.2.1",
+  "version": "v1.3.0",
   "authors": [
     {
       "name": "Filipe Silva",
@@ -28,8 +28,8 @@
     }
   },
   "require": {
-    "slick/common": "^1.1",
-    "slick/validator": "^1.1",
+    "slick/common": "^1.2",
+    "slick/validator": "^1.2",
     "slick/filter": "^1.1",
     "slick/http": "^1.2",
     "symfony/yaml": "~2.1",
@@ -38,14 +38,15 @@
     "league/event": "^2.1"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.*",
+    "phpunit/phpunit": "^4",
+    "phpunit/php-code-coverage": "^2",
     "scrutinizer/ocular": "~1.1",
-    "behat/behat": "~3.0.4"
+    "behat/behat": "^3.0.4"
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.2-dev",
-      "dev-develop": "1.3-dev"
+      "dev-master": "1.3-dev",
+      "dev-develop": "1.4-dev"
     }
   }
 }

@@ -155,7 +155,7 @@ class FieldSetTest extends TestCase
     <legend>Test</legend>
     <div class="form-group">
     <label for="input-name" class="control-label">Name</label>
-    <input type="text" id="input-name" name="name" value="Jon Doe" class="my-class form-control" required>
+    <input type="text" id="input-name" name="name" class="my-class form-control" required value="Jon Doe">
 </div>
 </fieldset>
 EOS;

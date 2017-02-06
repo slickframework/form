@@ -43,8 +43,9 @@ class CheckboxTest extends TestCase
             ->setAttribute('class', 'user-ctrl');
         $expected = <<<EOHTML
 <div class="checkbox">
+    <input id="_public" name="public" type="hidden" value="1">
     <label for="input-public" class="control-label normal-label" ng-test-controller>
-        <input type="checkbox" name="public" value="1" checked id="input-public" class="user-ctrl"> Check this!
+        <input onchange="document.getElementById('_public').value=(this.checked)?1:0;" type="checkbox" checked id="input-public" class="user-ctrl" value="1"> Check this!
     </label>
 </div>
 EOHTML;

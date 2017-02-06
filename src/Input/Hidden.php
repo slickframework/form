@@ -10,6 +10,7 @@
 namespace Slick\Form\Input;
 
 use Slick\Form\InputInterface;
+use Slick\Form\Renderer\HiddenInput;
 
 /**
  * Hidden input
@@ -19,6 +20,11 @@ use Slick\Form\InputInterface;
  */
 class Hidden  extends AbstractInput implements InputInterface
 {
+
+    /**
+     * @var string Renderer class
+     */
+    protected $rendererClass = HiddenInput::class;
 
     /**
      * Crates the input with the attribute type as hidden

@@ -26,6 +26,7 @@ class Div extends AbstractRenderer implements RendererInterface
      */
     public function render($context = [])
     {
+        parent::render($context);
         $this->getEngine()->parse($this->template);
         $data = [
             'element' => $this->getElement(),

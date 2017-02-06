@@ -44,8 +44,16 @@ trait FilterAwareMethods
      */
     public function getValue()
     {
+        $value = $this->getRawValue();
+        if (is_array($value)) {
+            foreach ($value as $key => $part) {
+                $value[$key] = $this->getFilterChain()
+                    ->filter($part);
+            }
+            return $value;
+        }
         return $this->getFilterChain()
-            ->filter($this->getRawValue());
+            ->filter($value);
     }
 
 

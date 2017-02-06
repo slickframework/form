@@ -47,7 +47,9 @@ class Select extends AbstractInput implements
     public function setValue($value)
     {
         parent::setValue($value);
-        $this->getAttributes()->remove('value');
+        if ($this->hasAttribute('value')) {
+            $this->getAttributes()->remove('value');
+        }
         return $this;
     }
 
