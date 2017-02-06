@@ -2,7 +2,12 @@
 
 All Notable changes to `Slick/form` will be documented in this file.
 
-## 1.2.1 - 2016-11-23
+## 1.3.1 - 2017-01-06
+
+### Added
+- Support for Symfony/YAML ^3.3
+
+## 1.3.0 - 2016-11-23
 
 ### Added
 - Form object is now on the validators context

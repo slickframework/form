@@ -38,7 +38,8 @@ class AddElementsTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
-        $data = Yaml::parse(dirname(dirname(__DIR__)).'/forms/login.yml');
+        $contents = file_get_contents(dirname(dirname(__DIR__)).'/forms/login.yml');
+        $data = Yaml::parse($contents);
         $this->form = new Form();
         AddElements::execute($this->form, $data);
     }
